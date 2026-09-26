@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | ZoRent</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            🌿
+        </span>
+
+        <span>
+            ZoRent
+        </span>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#explore">
+            Explore
+        </a>
+
+        <a href="index.html#categories">
+            Categories
+        </a>
+
+        <a href="list-property.html">
+            List Your Property
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="listing-page">
+
+
+    <div class="listing-intro">
+
+        <span class="section-label">
+            ZORENT ACCOUNT
+        </span>
+
+        <h1>
+            Create your account
+        </h1>
+
+        <p>
+            Create a ZoRent account to list and manage your property.
+        </p>
+
+    </div>
+
+
+
+    <section class="form-section">
+
+
+        <form id="signupForm">
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="your@email.com"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    minlength="6"
+                    required>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="submit-property-btn">
+
+                Create Account
+
+            </button>
+
+
+        </form>
+
+
+
+        <p style="margin-top:25px; text-align:center;">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </p>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script src="supabase.js"></script>
+
+
+
+<script>
+
+document
+    .getElementById("signupForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            document.getElementById("email").value.trim();
+
+
+        const password =
+            document.getElementById("password").value;
+
+
+        const confirmPassword =
+            document.getElementById("confirmPassword").value;
+
+
+        if (password !== confirmPassword) {
+
+            alert("Passwords do not match.");
+
+            return;
+
+        }
+
+
+        const { data, error } =
+            await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+        if (error) {
+
+            alert(error.message);
+
+            return;
+
+        }
+
+
+        alert(
+            "Account created successfully! Please check your email and verify your account before logging in."
+        );
+
+
+        window.location.href =
+            "login.html";
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

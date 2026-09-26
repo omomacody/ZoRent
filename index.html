@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ZoRent | Stay • Explore • Relax</title>
+
+    <meta name="description"
+          content="Discover hotels, homestays, PGs, hostels, resorts and beautiful picnic spots across Mizoram.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <span>ZoRent</span>
+    </div>
+
+    <nav class="nav">
+
+    <a href="#home">Home</a>
+
+    <a href="#explore">Explore</a>
+
+    <a href="#categories">Categories</a>
+
+    <a href="list-property.html"
+       class="list-property-nav">
+        List Your Place
+    </a>
+
+</nav>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <p class="hero-small">
+            🌿 DISCOVER MIZORAM
+        </p>
+
+        <h1>
+            Stay closer to<br>
+            <span>nature.</span>
+        </h1>
+
+        <p class="hero-description">
+            Discover beautiful stays, homestays, hotels,
+            resorts and peaceful places across Mizoram.
+        </p>
+
+
+        <!-- SEARCH BOX -->
+
+        <div class="search-box">
+
+            <div class="search-item">
+
+                <span class="search-icon">📍</span>
+
+                <div>
+                    <small>Location</small>
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Where are you going?"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="search-item">
+
+                <span class="search-icon">🏷️</span>
+
+                <div>
+                    <small>Looking for</small>
+
+                    <select id="category">
+
+    <option value="">
+        Any place
+    </option>
+
+    <option value="hotel">
+        Hotel
+    </option>
+
+    <option value="homestay">
+        Homestay
+    </option>
+
+    <option value="pg">
+        PG
+    </option>
+
+    <option value="hostel">
+        Hostel
+    </option>
+
+    <option value="resort">
+        Resort
+    </option>
+
+    <option value="guest-house">
+        Guest House
+    </option>
+
+    <option value="picnic-spot">
+        Picnic Spot
+    </option>
+
+    <option value="camping-site">
+        Camping Site
+    </option>
+
+</select>
+
+            </div>
+
+
+            <button
+                class="search-btn"
+                onclick="searchPlaces()">
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<!-- ================= CATEGORIES ================= -->
+
+<section class="section" id="categories">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                FIND YOUR PLACE
+            </span>
+
+            <h2>
+                What are you looking for?
+            </h2>
+
+        </div>
+
+        <p>
+            Discover comfortable stays and beautiful
+            places across Mizoram.
+        </p>
+
+    </div>
+
+
+    <div class="category-grid">
+
+
+        <!-- HOTEL -->
+
+        <div class="category-card">
+
+            <div class="category-image hotel">
+                🏨
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Hotels
+                </h3>
+
+                <p>
+                    Comfortable stays for
+                    travellers and visitors.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOMESTAY -->
+
+        <div class="category-card">
+
+            <div class="category-image homestay">
+                🏡
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Homestays
+                </h3>
+
+                <p>
+                    Experience local hospitality
+                    and Mizo culture.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PG -->
+
+        <div class="category-card">
+
+            <div class="category-image pg">
+                🛏️
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    PG
+                </h3>
+
+                <p>
+                    Comfortable accommodation
+                    for longer stays.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOSTEL -->
+
+        <div class="category-card">
+
+            <div class="category-image hostel">
+                🏫
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Hostels
+                </h3>
+
+                <p>
+                    Affordable places for
+                    students and travellers.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESORT -->
+
+        <div class="category-card">
+
+            <div class="category-image resort">
+                🌴
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Resorts
+                </h3>
+
+                <p>
+                    Relax surrounded by
+                    beautiful nature.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- GUEST HOUSE -->
+
+        <div class="category-card">
+
+            <div class="category-image guest-house">
+                🏠
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Guest Houses
+                </h3>
+
+                <p>
+                    Peaceful and affordable
+                    places to stay.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PICNIC SPOT -->
+
+        <div class="category-card">
+
+            <div class="category-image picnic">
+                🧺
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Picnic Spots
+                </h3>
+
+                <p>
+                    Enjoy peaceful places
+                    with friends and family.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAMPING -->
+
+        <div class="category-card">
+
+            <div class="category-image camping">
+                🏕️
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+                    Camping Sites
+                </h3>
+
+                <p>
+                    Sleep under the stars
+                    and enjoy the hills.
+                </p>
+
+                <a href="#">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- ================= FEATURED PLACES ================= -->
+
+<section class="featured" id="explore">
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                EXPLORE ZORAM
+            </span>
+
+            <h2>
+                Discover popular places
+            </h2>
+
+        </div>
+
+        <a href="#" class="view-all">
+            View all →
+        </a>
+
+    </div>
+
+
+    <div class="place-grid">
+
+
+        <!-- HOTEL -->
+
+        <article class="place-card">
+
+            <div class="place-image hotel-image">
+
+                <span class="badge">
+                    Featured
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    HOTEL
+                </div>
+
+                <h3>
+                   Hotel Ransam
+                </h3>
+
+                <p class="location">
+                    📍 Aizawl, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+    3★
+    <small>Hotel</small>
+</strong>
+
+<span class="rating">
+    ★ 3-Star
+</span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOMESTAY -->
+
+        <article class="place-card">
+
+            <div class="place-image homestay-image">
+
+                <span class="badge">
+                    Popular
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    HOMESTAY
+                </div>
+
+                <h3>
+                    Hillside Mizo Homestay
+                </h3>
+
+                <p class="location">
+                    📍 Aizawl, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹1,500
+                        <small>/ night</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.9
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- RESORT -->
+
+        <article class="place-card">
+
+            <div class="place-image resort-image">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    RESORT
+                </div>
+
+                <h3>
+                    Green Hills Resort
+                </h3>
+
+                <p class="location">
+                    📍 Thenzawl, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹2,500
+                        <small>/ night</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.9
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- GUEST HOUSE -->
+
+        <article class="place-card">
+
+            <div class="place-image guest-house-image">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    GUEST HOUSE
+                </div>
+
+                <h3>
+                    Zoram Guest House
+                </h3>
+
+                <p class="location">
+                    📍 Lunglei, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹1,000
+                        <small>/ night</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.7
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PG -->
+
+        <article class="place-card">
+
+            <div class="place-image pg-image">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    PG
+                </div>
+
+                <h3>
+                    Green Valley PG
+                </h3>
+
+                <p class="location">
+                    📍 Aizawl, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹5,000
+                        <small>/ month</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.6
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- HOSTEL -->
+
+        <article class="place-card">
+
+            <div class="place-image hostel-image">
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    HOSTEL
+                </div>
+
+                <h3>
+                    Zoram Student Hostel
+                </h3>
+
+                <p class="location">
+                    📍 Aizawl, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹3,500
+                        <small>/ month</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.5
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PICNIC SPOT -->
+
+        <article class="place-card">
+
+            <div class="place-image picnic-image">
+
+                <span class="badge">
+                    Weekend
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    PICNIC SPOT
+                </div>
+
+                <h3>
+                    Green Valley Picnic Spot
+                </h3>
+
+                <p class="location">
+                    📍 Sialsuk, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹200
+                        <small>/ person</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.8
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CAMPING -->
+
+        <article class="place-card">
+
+            <div class="place-image camping-image">
+
+                <span class="badge">
+                    Nature
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+            </div>
+
+            <div class="place-info">
+
+                <div class="place-type">
+                    CAMPING SITE
+                </div>
+
+                <h3>
+                    Hillside Camping
+                </h3>
+
+                <p class="location">
+                    📍 Hmuifang, Mizoram
+                </p>
+
+                <div class="place-bottom">
+
+                    <strong>
+                        ₹800
+                        <small>/ night</small>
+                    </strong>
+
+                    <span class="rating">
+                        ★ 4.7
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= NATURE BANNER ================= -->
+
+<section class="nature-banner">
+
+    <div class="nature-content">
+
+        <span>
+            🌿 EXPERIENCE ZORAM
+        </span>
+
+        <h2>
+            Where every journey<br>
+            meets the hills.
+        </h2>
+
+        <p>
+            From misty mountains to peaceful
+            villages, discover the natural beauty
+            of Mizoram.
+        </p>
+
+        <button>
+            Explore Mizoram →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LIST YOUR PLACE ================= -->
+
+<section class="list-section" id="list-property">
+
+    <div>
+
+        <span class="section-label">
+            FOR PROPERTY OWNERS
+        </span>
+
+        <h2>
+            Have a place people<br>
+            would love to visit?
+        </h2>
+
+        <p>
+            List your hotel, homestay, PG, hostel,
+            resort or picnic spot on ZoRent and
+            reach more visitors.
+        </p>
+
+        <button class="primary-btn">
+            List Your Place →
+        </button>
+
+    </div>
+
+
+    <div class="owner-card">
+
+        <div class="owner-icon">
+            🌿
+        </div>
+
+        <h3>
+            Grow your business
+        </h3>
+
+        <p>
+            Reach travellers and local customers
+            searching for places in Mizoram.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= LIST YOUR PLACE CTA ================= -->
+
+<section class="owner-cta">
+
+    <div class="owner-cta-content">
+
+        <span class="section-label">
+            PROPERTY OWNERS
+        </span>
+
+        <h2>
+            Have a place in Mizoram?
+        </h2>
+
+        <p>
+            List your hotel, homestay, PG, hostel,
+            resort, guest house, picnic spot or
+            camping site on ZoRent.
+        </p>
+
+        <a href="list-property.html"
+           class="owner-cta-button">
+
+            List Your Place →
+
+        </a>
+
+    </div>
+
+</section>
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div>
+
+            <div class="logo footer-logo">
+                🌿 ZoRent
+            </div>
+
+            <p>
+                Discover places.<br>
+                Experience Mizoram.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="#">
+                Hotels
+            </a>
+
+            <a href="#">
+                Homestays
+            </a>
+
+            <a href="#">
+                Resorts
+            </a>
+
+            <a href="#">
+                Picnic Spots
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                ZoRent
+            </h4>
+
+            <a href="#">
+                About us
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+            <a href="#">
+                List your place
+            </a>
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ZoRent. All rights reserved.
+        </span>
+
+        <span>
+            Made with 🌿 in Mizoram
+        </span>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>List Your Property | ZoRent</title>
+
+    <meta name="description"
+          content="List your hotel, homestay, PG, hostel, resort or other property on ZoRent.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            🌿
+        </span>
+
+        <span>
+            ZoRent
+        </span>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#explore">
+            Explore
+        </a>
+
+        <a href="index.html#categories">
+            Categories
+        </a>
+
+        <a href="list-property.html">
+            List Your Property
+        </a>
+
+    </nav>
+
+
+    <button class="menu-btn">
+        ☰
+    </button>
+
+</header>
+
+
+
+<!-- ================= PAGE ================= -->
+
+<main class="listing-page">
+
+
+    <!-- INTRO -->
+
+    <div class="listing-intro">
+
+        <span class="section-label">
+            PARTNER WITH ZORENT
+        </span>
+
+        <h1>
+            List your property
+        </h1>
+
+        <p>
+            Reach travellers and guests looking for
+            places to stay and explore across Mizoram.
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= FORM ================= -->
+
+    <form id="propertyForm"
+          class="property-form">
+
+
+        <!-- ================= PROPERTY INFORMATION ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Property Information
+            </h2>
+
+            <p class="form-description">
+                Tell us about your property.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="propertyName">
+                    Property Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="propertyName"
+                    name="propertyName"
+                    placeholder="e.g. Hotel Ransam"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="category">
+                    Property Type *
+                </label>
+
+                <select
+                    id="category"
+                    name="category"
+                    required>
+
+                    <option value="">
+                        Select property type
+                    </option>
+
+                    <option value="hotel">
+                        Hotel
+                    </option>
+
+                    <option value="homestay">
+                        Homestay
+                    </option>
+
+                    <option value="pg">
+                        PG
+                    </option>
+
+                    <option value="hostel">
+                        Hostel
+                    </option>
+
+                    <option value="resort">
+                        Resort
+                    </option>
+
+                    <option value="guest-house">
+                        Guest House
+                    </option>
+
+                    <option value="picnic-spot">
+                        Picnic Spot
+                    </option>
+
+                    <option value="camping-site">
+                        Camping Site
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="description">
+                    About Your Property *
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    placeholder="Describe your property, rooms, surroundings and services..."
+                    required></textarea>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Location
+            </h2>
+
+            <p class="form-description">
+                Help guests find your property easily.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="address">
+                    Address *
+                </label>
+
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Village / locality, district, Mizoram"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="maps">
+                    Google Maps Link
+                </label>
+
+                <input
+                    type="url"
+                    id="maps"
+                    name="maps"
+                    placeholder="Paste your Google Maps link">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Contact Information
+            </h2>
+
+            <p class="form-description">
+                Guests will use these details to contact you.
+            </p>
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="e.g. 8119914534"
+                        required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="whatsapp">
+                        WhatsApp Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="whatsapp"
+                        name="whatsapp"
+                        placeholder="WhatsApp number">
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="your@email.com">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= OWNER DETAILS ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Owner / Manager Details
+            </h2>
+
+            <p class="form-description">
+                These details are used by ZoRent to contact and verify
+                the person submitting the property.
+            </p>
+
+
+
+            <div class="form-group">
+
+                <label for="ownerName">
+                    Owner / Manager Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="ownerName"
+                    name="ownerName"
+                    placeholder="Full name"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="ownerType">
+                    Your Role *
+                </label>
+
+                <select
+                    id="ownerType"
+                    name="ownerType"
+                    required>
+
+                    <option value="">
+                        Select your role
+                    </option>
+
+                    <option value="owner">
+                        Property Owner
+                    </option>
+
+                    <option value="manager">
+                        Property Manager
+                    </option>
+
+                    <option value="authorized">
+                        Authorized Representative
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="ownerPhone">
+                        Owner / Manager Phone *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="ownerPhone"
+                        name="ownerPhone"
+                        placeholder="e.g. 8119914534"
+                        required>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="ownerWhatsapp">
+                        WhatsApp Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="ownerWhatsapp"
+                        name="ownerWhatsapp"
+                        placeholder="WhatsApp number">
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="ownerEmail">
+                    Email Address *
+                </label>
+
+                <input
+                    type="email"
+                    id="ownerEmail"
+                    name="ownerEmail"
+                    placeholder="your@email.com"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="verification">
+                    Verification Document
+                </label>
+
+                <p class="field-help">
+                    Upload a document that helps verify your identity
+                    or connection with the property.
+                </p>
+
+                <input
+                    type="file"
+                    id="verification"
+                    name="verification"
+                    accept=".jpg,.jpeg,.png,.pdf">
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PRICING ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Pricing
+            </h2>
+
+            <p class="form-description">
+                Give guests an idea of your rates.
+            </p>
+
+
+
+            <div class="form-row">
+
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Starting Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price"
+                        name="price"
+                        placeholder="e.g. 1500">
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="priceType">
+                        Price Type
+                    </label>
+
+                    <select
+                        id="priceType"
+                        name="priceType">
+
+                        <option value="night">
+                            Per Night
+                        </option>
+
+                        <option value="month">
+                            Per Month
+                        </option>
+
+                        <option value="person">
+                            Per Person
+                        </option>
+
+                        <option value="day">
+                            Per Day
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PHOTOS ================= -->
+
+        <section class="form-section">
+
+            <h2>
+                Property Photos
+            </h2>
+
+            <p class="form-description">
+                Upload clear photos of your property.
+            </p>
+
+
+            <div class="upload-box">
+
+                <div class="upload-icon">
+                    📸
+                </div>
+
+                <h3>
+                    Upload photos
+                </h3>
+
+                <p>
+                    Add photos of your rooms,
+                    exterior, facilities and surroundings.
+                </p>
+
+                <input
+                    type="file"
+                    id="photos"
+                    name="photos"
+                    accept="image/*"
+                    multiple>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUBMIT ================= -->
+
+        <section class="submit-section">
+
+            <div>
+
+                <span class="pending-badge">
+                    🟡 Pending Review
+                </span>
+
+                <h3>
+                    Ready to list your property?
+                </h3>
+
+                <p>
+                    Your property will be reviewed by the
+                    ZoRent team before it becomes publicly visible.
+                </p>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="submit-property-btn">
+
+                Submit Property
+
+            </button>
+
+        </section>
+
+
+    </form>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+
+        <div>
+
+            <div class="logo footer-logo">
+                🌿 ZoRent
+            </div>
+
+            <p>
+                Discover places.<br>
+                Experience Mizoram.
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="index.html#categories">
+                Categories
+            </a>
+
+            <a href="index.html#explore">
+                Places
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                ZoRent
+            </h4>
+
+            <a href="list-property.html">
+                List Your Property
+            </a>
+
+            <a href="#">
+                Contact
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ZoRent. All rights reserved.
+        </span>
+
+        <span>
+            Made with 🌿 in Mizoram
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================= SUPABASE ================= -->
+
+
+<script>
+
+document
+    .getElementById("propertyForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        /* ================= CHECK LOGIN ================= */
+
+        const {
+            data: {
+                user
+            }
+        } = await supabaseClient.auth.getUser();
+
+
+        if (!user) {
+
+            alert(
+                "Please create an account or log in before listing your property."
+            );
+
+            window.location.href = "login.html";
+
+            return;
+
+        }
+
+
+
+        /* ================= GET FORM VALUES ================= */
+
+        const form = event.target;
+
+
+        const propertyName =
+            form.propertyName.value.trim();
+
+
+        const category =
+            form.category.value;
+
+
+        const description =
+            form.description.value.trim();
+
+
+        const address =
+            form.address.value.trim();
+
+
+        const googleMaps =
+            form.maps.value.trim();
+
+
+        const phone =
+            form.phone.value.trim();
+
+
+        const whatsapp =
+            form.whatsapp.value.trim();
+
+
+        const email =
+            form.email.value.trim();
+
+
+        const price =
+            form.price.value
+                ? Number(form.price.value)
+                : null;
+
+
+        const priceType =
+            form.priceType.value;
+
+
+
+        /* ================= INSERT INTO SUPABASE ================= */
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("properties")
+            .insert([
+                {
+
+                    owner_id: user.id,
+
+                    property_name: propertyName,
+
+                    category: category,
+
+                    description: description,
+
+                    address: address,
+
+                    google_maps: googleMaps,
+
+                    phone: phone,
+
+                    whatsapp: whatsapp,
+
+                    email: email,
+
+                    price: price,
+
+                    price_type: priceType,
+
+                    status: "pending"
+
+                }
+            ])
+            .select();
+
+
+
+        /* ================= ERROR ================= */
+
+        if (error) {
+
+            console.error(
+                "Supabase error:",
+                error
+            );
+
+            alert(
+                "There was a problem submitting your property:\n\n" +
+                error.message
+            );
+
+            return;
+
+        }
+
+
+
+        /* ================= SUCCESS ================= */
+
+        console.log(
+            "Property submitted:",
+            data
+        );
+
+
+        alert(
+            "Your property has been submitted successfully!\n\n" +
+            "Status: Pending Review.\n\n" +
+            "The ZoRent team will review your listing before it becomes publicly visible."
+        );
+
+
+        form.reset();
+
+
+    });
+
+</script>
+
+<script src="supabase.js"></script>
+</body>
+
+</html>

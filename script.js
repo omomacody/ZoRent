@@ -1,10 +1,18 @@
 function searchPlaces() {
 
     const location =
-        document.getElementById("location").value;
+        document
+            .getElementById("location")
+            .value
+            .trim()
+            .toLowerCase();
 
     const category =
-        document.getElementById("category").value;
+        document
+            .getElementById("category")
+            .value
+            .trim()
+            .toLowerCase();
 
 
     if (location === "" && category === "") {
@@ -17,17 +25,59 @@ function searchPlaces() {
     }
 
 
-    let message = "Searching ZoRent";
+    const cards =
+        document.querySelectorAll(
+            "#propertyGrid .place-card"
+        );
 
-    if (location !== "") {
-        message += " in " + location;
-    }
 
-    if (category !== "") {
-        message += " for " + category;
-    }
+    cards.forEach(card => {
 
-    alert(message + "...");
+        const text =
+            card.innerText
+                .toLowerCase();
+
+
+        const matchesLocation =
+            location === "" ||
+            text.includes(location);
+
+
+        const matchesCategory =
+            category === "" ||
+            text.includes(
+                category.replaceAll("-", " ")
+            );
+
+
+        if (
+            matchesLocation &&
+            matchesCategory
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("explore")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}function selectCategory(category) {
+
+    document.getElementById("category").value =
+        category;
+
+    searchPlaces();
 
 }
 

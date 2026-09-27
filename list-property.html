@@ -13,7 +13,8 @@
     <meta name="description"
           content="List your hotel, homestay, PG, hostel, resort or other property on ZoRent.">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
 
     <link rel="preconnect"
           href="https://fonts.googleapis.com">
@@ -25,7 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
           rel="stylesheet">
 
-    <!-- Supabase -->
+    <!-- SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
@@ -34,7 +35,9 @@
 <body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
@@ -80,7 +83,9 @@
 
 
 
-<!-- ================= PAGE ================= -->
+<!-- =====================================================
+     PAGE
+===================================================== -->
 
 <main class="listing-page">
 
@@ -106,13 +111,17 @@
 
 
 
-    <!-- ================= FORM ================= -->
+    <!-- =================================================
+         FORM
+    ================================================== -->
 
     <form id="propertyForm"
           class="property-form">
 
 
-        <!-- ================= PROPERTY INFORMATION ================= -->
+        <!-- =============================================
+             PROPERTY INFORMATION
+        ============================================== -->
 
         <section class="form-section">
 
@@ -139,7 +148,6 @@
                     required>
 
             </div>
-
 
 
             <div class="form-group">
@@ -194,7 +202,6 @@
             </div>
 
 
-
             <div class="form-group">
 
                 <label for="description">
@@ -214,7 +221,9 @@
 
 
 
-        <!-- ================= LOCATION ================= -->
+        <!-- =============================================
+             LOCATION
+        ============================================== -->
 
         <section class="form-section">
 
@@ -243,7 +252,6 @@
             </div>
 
 
-
             <div class="form-group">
 
                 <label for="maps">
@@ -262,7 +270,9 @@
 
 
 
-        <!-- ================= CONTACT ================= -->
+        <!-- =============================================
+             CONTACT
+        ============================================== -->
 
         <section class="form-section">
 
@@ -294,7 +304,6 @@
                 </div>
 
 
-
                 <div class="form-group">
 
                     <label for="whatsapp">
@@ -311,7 +320,6 @@
 
 
             </div>
-
 
 
             <div class="form-group">
@@ -332,7 +340,9 @@
 
 
 
-        <!-- ================= OWNER DETAILS ================= -->
+        <!-- =============================================
+             OWNER DETAILS
+        ============================================== -->
 
         <section class="form-section">
 
@@ -341,10 +351,11 @@
             </h2>
 
             <p class="form-description">
-                These details are used by ZoRent to contact and verify
-                the person submitting the property.
-            </p>
 
+                These details are used by ZoRent to contact
+                and verify the person submitting the property.
+
+            </p>
 
 
             <div class="form-group">
@@ -361,7 +372,6 @@
                     required>
 
             </div>
-
 
 
             <div class="form-group">
@@ -396,7 +406,6 @@
             </div>
 
 
-
             <div class="form-row">
 
 
@@ -414,7 +423,6 @@
                         required>
 
                 </div>
-
 
 
                 <div class="form-group">
@@ -435,7 +443,6 @@
             </div>
 
 
-
             <div class="form-group">
 
                 <label for="ownerEmail">
@@ -452,6 +459,7 @@
             </div>
 
 
+            <!-- VERIFICATION -->
 
             <div class="form-group">
 
@@ -460,8 +468,10 @@
                 </label>
 
                 <p class="field-help">
-                    Upload a document that helps verify your identity
-                    or connection with the property.
+
+                    Upload a document that helps verify
+                    your identity or connection with the property.
+
                 </p>
 
                 <input
@@ -476,7 +486,9 @@
 
 
 
-        <!-- ================= PRICING ================= -->
+        <!-- =============================================
+             PRICING
+        ============================================== -->
 
         <section class="form-section">
 
@@ -487,7 +499,6 @@
             <p class="form-description">
                 Give guests an idea of your rates.
             </p>
-
 
 
             <div class="form-row">
@@ -506,7 +517,6 @@
                         placeholder="e.g. 1500">
 
                 </div>
-
 
 
                 <div class="form-group">
@@ -546,7 +556,9 @@
 
 
 
-        <!-- ================= PHOTOS ================= -->
+        <!-- =============================================
+             PHOTOS
+        ============================================== -->
 
         <section class="form-section">
 
@@ -578,7 +590,7 @@
                     type="file"
                     id="photos"
                     name="photos"
-                    accept="image/*"
+                    accept="image/jpeg,image/png,image/webp"
                     multiple>
 
             </div>
@@ -587,9 +599,12 @@
 
 
 
-        <!-- ================= SUBMIT ================= -->
+        <!-- =============================================
+             SUBMIT
+        ============================================== -->
 
         <section class="submit-section">
+
 
             <div>
 
@@ -609,14 +624,15 @@
             </div>
 
 
-
             <button
                 type="submit"
-                class="submit-property-btn">
+                class="submit-property-btn"
+                id="submitButton">
 
                 Submit Property
 
             </button>
+
 
         </section>
 
@@ -627,7 +643,9 @@
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
@@ -646,7 +664,6 @@
             </p>
 
         </div>
-
 
 
         <div>
@@ -670,7 +687,6 @@
         </div>
 
 
-
         <div>
 
             <h4>
@@ -691,7 +707,6 @@
     </div>
 
 
-
     <div class="footer-bottom">
 
         <span>
@@ -708,172 +723,360 @@
 
 
 
-<!-- ================= SUPABASE ================= -->
+<!-- =====================================================
+     SUPABASE CONNECTION
+===================================================== -->
 
+<script src="supabase.js"></script>
+
+
+
+<!-- =====================================================
+     PROPERTY SUBMISSION
+===================================================== -->
 
 <script>
 
-document
-    .getElementById("propertyForm")
-    .addEventListener("submit", async function(event) {
+const form = document.getElementById("propertyForm");
+const submitButton = document.getElementById("submitButton");
 
-        event.preventDefault();
+form.addEventListener("submit", async function(event) {
 
+    event.preventDefault();
 
-        /* ================= CHECK LOGIN ================= */
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
 
-        const {
-            data: {
-                user
+    try {
+
+        if (!window.supabaseClient) {
+            throw new Error("Supabase connection was not found. Check supabase.js.");
+        }
+
+        const propertyName = document.getElementById("propertyName").value.trim();
+        const category = document.getElementById("category").value;
+        const description = document.getElementById("description").value.trim();
+        const address = document.getElementById("address").value.trim();
+        const maps = document.getElementById("maps").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const whatsapp = document.getElementById("whatsapp").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        const ownerName = document.getElementById("ownerName").value.trim();
+        const ownerType = document.getElementById("ownerType").value;
+        const ownerPhone = document.getElementById("ownerPhone").value.trim();
+        const ownerWhatsapp = document.getElementById("ownerWhatsapp").value.trim();
+        const ownerEmail = document.getElementById("ownerEmail").value.trim();
+
+        const price = document.getElementById("price").value;
+        const priceType = document.getElementById("priceType").value;
+
+        const photos = document.getElementById("photos").files;
+        const verification = document.getElementById("verification").files[0];
+
+        if (photos.length > 10) {
+            throw new Error("Please upload a maximum of 10 property photos.");
+        }
+
+        /*
+         * IMPORTANT:
+         * Upload files FIRST, then insert the property.
+         * This avoids needing an UPDATE permission on the
+         * properties table just to save photo_urls.
+         */
+
+        const uploadFolder =
+            "submissions/" +
+            Date.now() +
+            "-" +
+            Math.random().toString(36).substring(2, 10);
+
+        const photoUrls = [];
+
+        for (let i = 0; i < photos.length; i++) {
+
+            const file = photos[i];
+
+            const extension =
+                file.name.includes(".")
+                    ? file.name.split(".").pop().toLowerCase()
+                    : "jpg";
+
+            const fileName =
+                uploadFolder +
+                "/photos/" +
+                i +
+                "-" +
+                Date.now() +
+                "." +
+                extension;
+
+            const { error: uploadError } =
+                await window.supabaseClient.storage
+                    .from("property-images")
+                    .upload(
+                        fileName,
+                        file,
+                        {
+                            cacheControl: "3600",
+                            upsert: false
+                        }
+                    );
+
+            if (uploadError) {
+                console.error(uploadError);
+                throw new Error(
+                    "Photo upload failed: " +
+                    uploadError.message
+                );
             }
-        } = await supabaseClient.auth.getUser();
 
+            const { data: publicUrlData } =
+                window.supabaseClient.storage
+                    .from("property-images")
+                    .getPublicUrl(fileName);
 
-        if (!user) {
+            if (
+                !publicUrlData ||
+                !publicUrlData.publicUrl
+            ) {
+                throw new Error(
+                    "Could not create public URL for photo."
+                );
+            }
 
-            alert(
-                "Please create an account or log in before listing your property."
+            photoUrls.push(
+                publicUrlData.publicUrl
             );
+        }
 
-            window.location.href = "login.html";
+        /*
+         * VERIFICATION DOCUMENT
+         */
 
-            return;
+        let verificationUrl = null;
+
+        if (verification) {
+
+            const extension =
+                verification.name.includes(".")
+                    ? verification.name.split(".").pop().toLowerCase()
+                    : "jpg";
+
+            const verificationPath =
+                uploadFolder +
+                "/verification/" +
+                Date.now() +
+                "." +
+                extension;
+
+            const {
+                error: verificationError
+            } =
+                await window.supabaseClient.storage
+                    .from("property-images")
+                    .upload(
+                        verificationPath,
+                        verification,
+                        {
+                            cacheControl: "3600",
+                            upsert: false
+                        }
+                    );
+
+            if (verificationError) {
+                console.error(verificationError);
+                throw new Error(
+                    "Verification document upload failed: " +
+                    verificationError.message
+                );
+            }
+
+            const {
+                data: verificationPublicData
+            } =
+                window.supabaseClient.storage
+                    .from("property-images")
+                    .getPublicUrl(
+                        verificationPath
+                    );
+
+            verificationUrl =
+                verificationPublicData.publicUrl;
+        }
+
+        /*
+         * GET CURRENT USER
+         *
+         * If your ZoRent site does not use Supabase Auth,
+         * owner_id will simply be null.
+         */
+
+        let ownerId = null;
+
+        try {
+
+            const {
+                data: userData
+            } =
+                await window.supabaseClient.auth.getUser();
+
+            ownerId =
+                userData?.user?.id || null;
+
+        } catch (authError) {
+
+            console.log(
+                "No authenticated user. Continuing as public submission."
+            );
 
         }
 
+        /*
+         * INSERT PROPERTY
+         *
+         * PHOTO URLS ARE SAVED DURING INSERT.
+         * No UPDATE is required.
+         */
 
+        const propertyData = {
 
-        /* ================= GET FORM VALUES ================= */
+            property_name:
+                propertyName,
 
-        const form = event.target;
+            category:
+                category,
 
+            description:
+                description,
 
-        const propertyName =
-            form.propertyName.value.trim();
+            address:
+                address,
 
+            maps:
+                maps || null,
 
-        const category =
-            form.category.value;
+            phone:
+                phone,
 
+            whatsapp:
+                whatsapp || null,
 
-        const description =
-            form.description.value.trim();
+            email:
+                email || null,
 
+            owner_name:
+                ownerName,
 
-        const address =
-            form.address.value.trim();
+            owner_type:
+                ownerType,
 
+            owner_phone:
+                ownerPhone,
 
-        const googleMaps =
-            form.maps.value.trim();
+            owner_whatsapp:
+                ownerWhatsapp || null,
 
+            owner_email:
+                ownerEmail,
 
-        const phone =
-            form.phone.value.trim();
+            price:
+                price
+                    ? Number(price)
+                    : null,
 
+            price_type:
+                priceType,
 
-        const whatsapp =
-            form.whatsapp.value.trim();
+            status:
+                "pending",
 
+            photo_urls:
+                photoUrls,
 
-        const email =
-            form.email.value.trim();
+            verification_document:
+                verificationUrl
 
+        };
 
-        const price =
-            form.price.value
-                ? Number(form.price.value)
-                : null;
+        /*
+         * Only send owner_id when an authenticated
+         * Supabase user actually exists.
+         */
 
-
-        const priceType =
-            form.priceType.value;
-
-
-
-        /* ================= INSERT INTO SUPABASE ================= */
+        if (ownerId) {
+            propertyData.owner_id = ownerId;
+        }
 
         const {
-            data,
-            error
-        } = await supabaseClient
-            .from("properties")
-            .insert([
-                {
+            data: property,
+            error: propertyError
+        } =
+            await window.supabaseClient
+                .from("properties")
+                .insert(propertyData)
+                .select()
+                .single();
 
-                    owner_id: user.id,
-
-                    property_name: propertyName,
-
-                    category: category,
-
-                    description: description,
-
-                    address: address,
-
-                    google_maps: googleMaps,
-
-                    phone: phone,
-
-                    whatsapp: whatsapp,
-
-                    email: email,
-
-                    price: price,
-
-                    price_type: priceType,
-
-                    status: "pending"
-
-                }
-            ])
-            .select();
-
-
-
-        /* ================= ERROR ================= */
-
-        if (error) {
+        if (propertyError) {
 
             console.error(
-                "Supabase error:",
-                error
+                "Property insert error:",
+                propertyError
             );
 
-            alert(
-                "There was a problem submitting your property:\n\n" +
-                error.message
+            throw new Error(
+                "Property could not be saved: " +
+                propertyError.message
             );
-
-            return;
-
         }
 
-
-
-        /* ================= SUCCESS ================= */
-
         console.log(
-            "Property submitted:",
-            data
+            "Property successfully created:",
+            property
         );
 
+        /*
+         * SUCCESS
+         */
 
         alert(
-            "Your property has been submitted successfully!\n\n" +
-            "Status: Pending Review.\n\n" +
+            "Property submitted successfully! 🟢\n\n" +
+            "Your property is now Pending Review.\n\n" +
+            "Photos uploaded: " +
+            photoUrls.length +
+            "\n\n" +
             "The ZoRent team will review your listing before it becomes publicly visible."
         );
 
-
         form.reset();
 
+        window.location.href =
+            "index.html";
 
-    });
+    } catch (error) {
+
+        console.error(
+            "Submission error:",
+            error
+        );
+
+        alert(
+            "Submission failed:\n\n" +
+            error.message
+        );
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+            "Submit Property";
+    }
+
+});
 
 </script>
 
-<script src="supabase.js"></script>
+
 </body>
 
 </html>

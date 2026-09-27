@@ -1865,4 +1865,117 @@ footer {
         font-size: 100px;
     }
 
+}.property-filters {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.property-filters input,
+.property-filters select {
+    padding: 13px 16px;
+    border: 1px solid #d8e0db;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 15px;
+}
+
+.property-filters input {
+    flex: 1;
+    min-width: 240px;
+}
+
+.property-filters select {
+    min-width: 190px;
+}
+
+@media (max-width: 600px) {
+
+    .property-filters {
+        flex-direction: column;
+    }
+
+    .property-filters input,
+    .property-filters select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}.property-filters {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.property-filters input,
+.property-filters select {
+    padding: 13px 16px;
+    border: 1px solid #d8e0db;
+    border-radius: 10px;
+    font-size: 15px;
+    background: white;
+}
+
+.property-filters input {
+    flex: 1;
+    min-width: 240px;
+}
+
+.property-filters select {
+    min-width: 190px;
+}
+
+@media (max-width: 600px) {
+
+    .property-filters {
+        flex-direction: column;
+    }
+
+    .property-filters input,
+    .property-filters select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+}.property-filters button {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #2f6f4e;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.property-filters button:hover {
+    opacity: 0.9;
+}.category-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 25px;
+    height: 25px;
+
+    margin-left: 7px;
+    padding: 0 7px;
+
+    border-radius: 50px;
+
+    background: #e8f3ec;
+    color: #2f6f4e;
+
+    font-size: 13px;
+    font-weight: 700;
+}.category-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }

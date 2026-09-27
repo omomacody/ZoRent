@@ -5,507 +5,89 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>ZoRent Admin</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-          rel="stylesheet">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
 
-<body class="admin-body">
+<body>
 
 
-<!-- ================= ADMIN HEADER ================= -->
+<header class="header">
 
-<header class="admin-header">
-
-    <div class="admin-brand">
-
-        <span>
-            🌿
-        </span>
-
-        <strong>
-            ZoRent
-        </strong>
-
-        <small>
-            ADMIN
-        </small>
-
+    <div class="logo">
+        🌿 ZoRent Admin
     </div>
 
+    <nav class="nav">
 
-    <a href="index.html"
-       class="admin-home">
+        <a href="index.html">
+            Website
+        </a>
 
-        View Website →
+        <a href="list-property.html">
+            List Property
+        </a>
 
-    </a>
+    </nav>
 
 </header>
 
 
 
-<!-- ================= ADMIN MAIN ================= -->
-
-<main class="admin-container">
+<main class="listing-page">
 
 
-    <!-- TITLE -->
+    <div class="listing-intro">
 
-    <div class="admin-title">
+        <span class="section-label">
+            ADMIN PANEL
+        </span>
 
-        <div>
+        <h1>
+            Property Submissions
+        </h1>
 
-            <span class="section-label">
-                MANAGEMENT
-            </span>
-
-            <h1>
-                Property Listings
-            </h1>
-
-            <p>
-                Review and manage properties submitted
-                to ZoRent.
-            </p>
-
-        </div>
+        <p>
+            Review and approve properties submitted
+            by owners and managers.
+        </p>
 
     </div>
 
 
 
-    <!-- ================= STATISTICS ================= -->
-
-    <div class="admin-stats">
-
-
-        <div class="admin-stat">
-
-            <span>
-                🟡
-            </span>
-
-            <div>
-
-                <strong id="pendingCount">
-                    3
-                </strong>
-
-                <small>
-                    Pending Review
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="admin-stat">
-
-            <span>
-                🟢
-            </span>
-
-            <div>
-
-                <strong>
-                    12
-                </strong>
-
-                <small>
-                    Published
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="admin-stat">
-
-            <span>
-                🏨
-            </span>
-
-            <div>
-
-                <strong>
-                    8
-                </strong>
-
-                <small>
-                    Hotels
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <div class="admin-stat">
-
-            <span>
-                🌿
-            </span>
-
-            <div>
-
-                <strong>
-                    27
-                </strong>
-
-                <small>
-                    Total Listings
-                </small>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- ================= FILTER ================= -->
-
-    <div class="admin-toolbar">
-
-
-        <select id="statusFilter">
-
-            <option value="all">
-                All Listings
-            </option>
-
-            <option value="pending">
-                Pending Review
-            </option>
-
-            <option value="approved">
-                Published
-            </option>
-
-            <option value="rejected">
-                Rejected
-            </option>
-
-        </select>
-
-
-        <select id="categoryFilter">
-
-            <option value="all">
-                All Categories
-            </option>
-
-            <option value="hotel">
-                Hotel
-            </option>
-
-            <option value="homestay">
-                Homestay
-            </option>
-
-            <option value="pg">
-                PG
-            </option>
-
-            <option value="hostel">
-                Hostel
-            </option>
-
-            <option value="resort">
-                Resort
-            </option>
-
-            <option value="guest-house">
-                Guest House
-            </option>
-
-            <option value="picnic-spot">
-                Picnic Spot
-            </option>
-
-            <option value="camping-site">
-                Camping Site
-            </option>
-
-        </select>
-
-
-        <input
-            type="search"
-            id="adminSearch"
-            placeholder="Search properties...">
-
-    </div>
-
-
-
-    <!-- ================= LISTINGS ================= -->
-
-    <section class="admin-list">
-
-
-        <!-- LISTING 1 -->
-
-        <article
-            class="admin-property"
-            data-status="pending"
-            data-category="hotel">
-
-
-            <div class="admin-property-image">
-
-                🏨
-
-            </div>
-
-
-            <div class="admin-property-info">
-
-                <div class="admin-property-top">
-
-                    <span class="admin-category">
-                        HOTEL
-                    </span>
-
-                    <span class="status pending">
-                        Pending Review
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Hotel Ransam
-                </h2>
-
+    <section class="form-section">
+
+        <div id="propertyList">
+
+            <div
+                style="
+                    padding:40px;
+                    text-align:center;
+                "
+            >
 
                 <p>
-                    📍 Mizoram
+                    Loading pending properties...
                 </p>
 
-
-                <small>
-                    Submitted by property owner
-                </small>
-
             </div>
 
-
-            <div class="admin-actions">
-
-                <button
-                    class="view-btn"
-                    onclick="viewListing('Hotel Ransam')">
-
-                    View
-
-                </button>
-
-
-                <button
-                    class="approve-btn"
-                    onclick="approveListing(this)">
-
-                    Approve
-
-                </button>
-
-
-                <button
-                    class="reject-btn"
-                    onclick="rejectListing(this)">
-
-                    Reject
-
-                </button>
-
-            </div>
-
-
-        </article>
-
-
-
-        <!-- LISTING 2 -->
-
-        <article
-            class="admin-property"
-            data-status="pending"
-            data-category="homestay">
-
-
-            <div class="admin-property-image">
-
-                🏡
-
-            </div>
-
-
-            <div class="admin-property-info">
-
-                <div class="admin-property-top">
-
-                    <span class="admin-category">
-                        HOMESTAY
-                    </span>
-
-                    <span class="status pending">
-                        Pending Review
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Example Homestay
-                </h2>
-
-
-                <p>
-                    📍 Aizawl, Mizoram
-                </p>
-
-
-                <small>
-                    Example listing
-                </small>
-
-            </div>
-
-
-            <div class="admin-actions">
-
-                <button
-                    class="view-btn">
-
-                    View
-
-                </button>
-
-
-                <button
-                    class="approve-btn"
-                    onclick="approveListing(this)">
-
-                    Approve
-
-                </button>
-
-
-                <button
-                    class="reject-btn"
-                    onclick="rejectListing(this)">
-
-                    Reject
-
-                </button>
-
-            </div>
-
-
-        </article>
-
-
-
-        <!-- LISTING 3 -->
-
-        <article
-            class="admin-property"
-            data-status="pending"
-            data-category="resort">
-
-
-            <div class="admin-property-image">
-
-                🌴
-
-            </div>
-
-
-            <div class="admin-property-info">
-
-                <div class="admin-property-top">
-
-                    <span class="admin-category">
-                        RESORT
-                    </span>
-
-                    <span class="status pending">
-                        Pending Review
-                    </span>
-
-                </div>
-
-
-                <h2>
-                    Green Hills Resort
-                </h2>
-
-
-                <p>
-                    📍 Mizoram
-                </p>
-
-
-                <small>
-                    Example listing
-                </small>
-
-            </div>
-
-
-            <div class="admin-actions">
-
-                <button
-                    class="view-btn">
-
-                    View
-
-                </button>
-
-
-                <button
-                    class="approve-btn"
-                    onclick="approveListing(this)">
-
-                    Approve
-
-                </button>
-
-
-                <button
-                    class="reject-btn"
-                    onclick="rejectListing(this)">
-
-                    Reject
-
-                </button>
-
-            </div>
-
-
-        </article>
-
+        </div>
 
     </section>
 
@@ -514,164 +96,807 @@
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-function approveListing(button) {
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
 
-    const card =
-        button.closest(".admin-property");
+const SUPABASE_URL =
+    "https://jlgudbktobxzdwbwgnkj.supabase.co";
 
-    const status =
-        card.querySelector(".status");
 
-    status.textContent =
-        "Published";
+const SUPABASE_KEY =
+    "sb_publishable_8sgkZH2-S_HNzkmVmf7s3Q_KiOys6IX";
 
-    status.classList.remove("pending");
 
-    status.classList.add("approved");
-
-    card.dataset.status =
-        "approved";
-
-    button.disabled = true;
-
-    alert(
-        "Property approved successfully."
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
     );
+
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
-function rejectListing(button) {
 
-    const card =
-        button.closest(".admin-property");
+/* =====================================================
+   PROPERTY LIST
+===================================================== */
 
-    const status =
-        card.querySelector(".status");
-
-    status.textContent =
-        "Rejected";
-
-    status.classList.remove("pending");
-
-    status.classList.add("rejected");
-
-    card.dataset.status =
-        "rejected";
-
-    button.disabled = true;
-
-    alert(
-        "Property rejected."
-    );
-
-}
+const propertyList =
+    document.getElementById("propertyList");
 
 
-function viewListing(name) {
 
-    alert(
-        "Viewing listing: " + name
-    );
+/* =====================================================
+   LOAD ONLY PENDING PROPERTIES
+===================================================== */
 
-}
+async function loadProperties() {
 
+    propertyList.innerHTML = `
 
-const statusFilter =
-    document.getElementById("statusFilter");
+        <div
+            style="
+                padding:40px;
+                text-align:center;
+            "
+        >
 
-const categoryFilter =
-    document.getElementById("categoryFilter");
+            <p>
+                Loading pending properties...
+            </p>
 
-const search =
-    document.getElementById("adminSearch");
+        </div>
 
-
-function filterListings() {
-
-    const status =
-        statusFilter.value;
-
-    const category =
-        categoryFilter.value;
-
-    const searchText =
-        search.value.toLowerCase();
+    `;
 
 
-    const listings =
-        document.querySelectorAll(
-            ".admin-property"
-        );
+    try {
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("properties")
+
+            .select("*")
+
+            .eq(
+                "status",
+                "pending"
+            )
+
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+console.log("ADMIN QUERY RESULT:", data);
+console.log(
+    "ADMIN QUERY STATUSES:",
+    (data || []).map(property => ({
+        id: property.id,
+        name: property.property_name,
+        status: property.status
+    }))
+);
 
 
-    listings.forEach(function(listing) {
 
-        const listingStatus =
-            listing.dataset.status;
+        /* =============================================
+           ERROR
+        ============================================= */
 
-        const listingCategory =
-            listing.dataset.category;
+        if (error) {
 
-        const listingText =
-            listing.textContent.toLowerCase();
+            propertyList.innerHTML = `
 
+                <div
+                    style="
+                        padding:25px;
+                        border:1px solid #e5caca;
+                        border-radius:15px;
+                        background:#fff5f5;
+                    "
+                >
 
-        const statusMatch =
-            status === "all" ||
-            listingStatus === status;
+                    <h3>
+                        Error loading properties
+                    </h3>
 
+                    <p>
+                        ${escapeHTML(
+                            error.message
+                        )}
+                    </p>
 
-        const categoryMatch =
-            category === "all" ||
-            listingCategory === category;
+                </div>
 
+            `;
 
-        const searchMatch =
-            listingText.includes(searchText);
-
-
-        if (
-            statusMatch &&
-            categoryMatch &&
-            searchMatch
-        ) {
-
-            listing.style.display =
-                "grid";
-
-        } else {
-
-            listing.style.display =
-                "none";
+            return;
 
         }
 
-    });
+
+
+        /* =============================================
+           NO PENDING PROPERTIES
+        ============================================= */
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            propertyList.innerHTML = `
+
+                <div
+                    style="
+                        padding:50px;
+                        text-align:center;
+                        border:1px solid #ddd;
+                        border-radius:16px;
+                        background:#fff;
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size:45px;
+                            margin-bottom:15px;
+                        "
+                    >
+                        ✓
+                    </div>
+
+                    <h3>
+                        No pending submissions
+                    </h3>
+
+                    <p>
+                        All property submissions
+                        have been reviewed.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /* =============================================
+           CLEAR LOADING
+        ============================================= */
+
+        propertyList.innerHTML = "";
+
+
+
+        /* =============================================
+           DISPLAY PENDING PROPERTIES
+        ============================================= */
+
+        data.forEach(property => {
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.style.border =
+                "1px solid #ddd";
+
+
+            card.style.borderRadius =
+                "16px";
+
+
+            card.style.padding =
+                "25px";
+
+
+            card.style.marginBottom =
+                "20px";
+
+
+            card.style.background =
+                "#ffffff";
+
+
+            card.style.boxShadow =
+                "0 5px 20px rgba(0,0,0,0.05)";
+
+
+
+            /* =========================================
+               PHOTO
+            ========================================= */
+
+            let photoHTML = "";
+
+
+            if (
+                property.photo_urls &&
+                Array.isArray(property.photo_urls) &&
+                property.photo_urls.length > 0
+            ) {
+
+                photoHTML = `
+
+                    <div
+                        style="
+                            display:flex;
+                            gap:10px;
+                            flex-wrap:wrap;
+                            margin:20px 0;
+                        "
+                    >
+
+                        ${property.photo_urls
+                            .map(url => `
+
+                                <img
+                                    src="${escapeHTML(url)}"
+                                    alt="Property photo"
+                                    style="
+                                        width:150px;
+                                        height:100px;
+                                        object-fit:cover;
+                                        border-radius:10px;
+                                    "
+                                >
+
+                            `)
+                            .join("")
+                        }
+
+                    </div>
+
+                `;
+
+            }
+
+
+
+            /* =========================================
+               GOOGLE MAPS
+            ========================================= */
+
+            let mapsHTML = "-";
+
+
+            if (property.google_maps) {
+
+                mapsHTML = `
+
+                    <a
+                        href="${escapeHTML(
+                            property.google_maps
+                        )}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Google Maps
+                    </a>
+
+                `;
+
+            }
+
+
+
+            /* =========================================
+               CARD
+            ========================================= */
+
+            card.innerHTML = `
+
+                <h2
+                    style="
+                        margin-top:0;
+                        margin-bottom:15px;
+                    "
+                >
+
+                    ${escapeHTML(
+                        property.property_name ||
+                        "Unnamed Property"
+                    )}
+
+                </h2>
+
+
+                <p>
+
+                    <strong>
+                        Category:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.category || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Description:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.description || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Address:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.address || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Google Maps:
+                    </strong>
+
+                    ${mapsHTML}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Phone:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.phone || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        WhatsApp:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.whatsapp || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Email:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.email || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Price:
+                    </strong>
+
+                    ${
+                        property.price
+                        ? "₹" + escapeHTML(
+                            property.price
+                        )
+                        : "-"
+                    }
+
+                    ${escapeHTML(
+                        property.price_type || ""
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
+                    <span
+                        style="
+                            display:inline-block;
+                            padding:5px 12px;
+                            margin-left:5px;
+                            border-radius:20px;
+                            background:#fff3cd;
+                            color:#856404;
+                        "
+                    >
+
+                        Pending
+
+                    </span>
+
+                </p>
+
+
+                ${photoHTML}
+
+
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        flex-wrap:wrap;
+                        margin-top:20px;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="approve-btn"
+                        data-id="${property.id}"
+                        style="
+                            padding:10px 18px;
+                            border:0;
+                            border-radius:8px;
+                            background:#198754;
+                            color:white;
+                            cursor:pointer;
+                        "
+                    >
+                        ✓ Approve
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="reject-btn"
+                        data-id="${property.id}"
+                        style="
+                            padding:10px 18px;
+                            border:0;
+                            border-radius:8px;
+                            background:#dc3545;
+                            color:white;
+                            cursor:pointer;
+                        "
+                    >
+                        ✕ Reject
+                    </button>
+
+                </div>
+
+
+                <p
+                    style="
+                        color:#777;
+                        font-size:14px;
+                        margin-top:20px;
+                    "
+                >
+
+                    <strong>
+                        Submitted:
+                    </strong>
+
+                    ${
+                        property.created_at
+
+                        ? escapeHTML(
+                            new Date(
+                                property.created_at
+                            ).toLocaleString()
+                        )
+
+                        : "-"
+                    }
+
+                </p>
+
+            `;
+
+
+            propertyList.appendChild(card);
+
+
+        });
+
+
+
+        /* =============================================
+           APPROVE BUTTONS
+        ============================================= */
+
+        document
+            .querySelectorAll(".approve-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        updateStatus(
+                            this.dataset.id,
+                            "approved",
+                            this
+                        );
+
+                    }
+                );
+
+            });
+
+
+
+        /* =============================================
+           REJECT BUTTONS
+        ============================================= */
+
+        document
+            .querySelectorAll(".reject-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        updateStatus(
+                            this.dataset.id,
+                            "rejected",
+                            this
+                        );
+
+                    }
+                );
+
+            });
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Unexpected loading error:",
+            error
+        );
+
+
+        propertyList.innerHTML = `
+
+            <div
+                style="
+                    padding:25px;
+                    border:1px solid #e5caca;
+                    border-radius:15px;
+                    background:#fff5f5;
+                "
+            >
+
+                <h3>
+                    Error loading properties
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+    }
 
 }
 
 
-statusFilter.addEventListener(
-    "change",
-    filterListings
-);
+
+/* =====================================================
+   APPROVE / REJECT PROPERTY
+===================================================== */
+
+async function updateStatus(
+    id,
+    newStatus,
+    button
+) {
 
 
-categoryFilter.addEventListener(
-    "change",
-    filterListings
-);
+    /* =============================================
+       PREVENT DOUBLE CLICK
+    ============================================= */
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.style.opacity = "0.6";
+
+        button.textContent =
+            "Updating...";
+
+    }
 
 
-search.addEventListener(
-    "input",
-    filterListings
-);
+    console.log(
+        "Updating property:",
+        id
+    );
+
+
+    console.log(
+        "New status:",
+        newStatus
+    );
+
+
+    try {
+
+
+        const {
+            error
+        } = await supabaseClient
+
+            .from("properties")
+
+            .update({
+                status: newStatus
+            })
+
+            .eq(
+                "id",
+                id
+            );
+
+
+        console.log(
+            "UPDATE ERROR:",
+            error
+        );
+
+
+        /* =========================================
+           UPDATE ERROR
+        ========================================= */
+
+        if (error) {
+
+            alert(
+                "Could not update property:\n\n" +
+                error.message
+            );
+
+
+            if (button) {
+
+                button.disabled = false;
+
+                button.style.opacity = "1";
+
+                button.textContent =
+                    newStatus === "approved"
+                    ? "✓ Approve"
+                    : "✕ Reject";
+
+            }
+
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           SUCCESS
+        ========================================= */
+
+        alert(
+            "Property successfully changed to " +
+            newStatus
+        );
+
+
+        /* =========================================
+           RELOAD ONLY PENDING PROPERTIES
+        ========================================= */
+
+        window.location.reload();
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Unexpected update error:",
+            error
+        );
+
+
+        alert(
+            "Something went wrong:\n\n" +
+            error.message
+        );
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.style.opacity = "1";
+
+            button.textContent =
+                newStatus === "approved"
+                ? "✓ Approve"
+                : "✕ Reject";
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   START ADMIN PAGE
+===================================================== */
+
+loadProperties();
 
 </script>
 

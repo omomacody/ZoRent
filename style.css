@@ -1978,4 +1978,225 @@ footer {
 .category-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}/* =====================================================
+   ABOUT PAGE
+===================================================== */
+
+.about-hero {
+    min-height: 420px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    background:
+        linear-gradient(
+            rgba(0, 60, 40, 0.55),
+            rgba(0, 60, 40, 0.55)
+        ),
+        url("images/mizoram-hills.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.about-hero-content {
+    max-width: 800px;
+    color: white;
+}
+
+.about-hero-content h1 {
+    font-size: 48px;
+    margin: 15px 0 20px;
+}
+
+.about-hero-content p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+.about-main {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.about-main .about-container {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 38px;
+    margin: 12px 0 20px;
+}
+
+.about-text p {
+    line-height: 1.8;
+    color: #555;
+}
+
+
+.about-box {
+    flex: 0 0 300px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: #f1f8f3;
+}
+
+.about-icon {
+    font-size: 55px;
+}
+
+.about-box h3 {
+    font-size: 24px;
+}
+
+
+.about-features {
+    padding: 80px 20px;
+    background: #f6faf7;
+}
+
+.about-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.about-heading h2 {
+    font-size: 36px;
+    margin-top: 12px;
+}
+
+
+.about-feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.about-feature-card {
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.06);
+}
+
+.about-feature-card > div {
+    font-size: 45px;
+}
+
+.about-feature-card h3 {
+    margin: 15px 0 10px;
+}
+
+.about-feature-card p {
+    line-height: 1.7;
+    color: #666;
+}
+
+
+.about-owner {
+    padding: 80px 20px;
+    background: #ffffff;
+}
+
+.about-owner-content {
+    max-width: 700px;
+    margin: auto;
+
+    text-align: center;
+}
+
+.about-owner-content h2 {
+    font-size: 36px;
+    margin: 12px 0 18px;
+}
+
+.about-owner-content p {
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+
+.footer {
+    padding: 50px 20px;
+    background: #123d2d;
+    color: white;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-content a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .about-hero-content h1 {
+        font-size: 36px;
+    }
+
+    .about-main .about-container {
+        flex-direction: column;
+    }
+
+    .about-box {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .about-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
 }

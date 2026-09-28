@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Edit Property | ZoRent</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+
+        <span class="logo-icon">🌿</span>
+
+        <span>ZoRent</span>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="index.html#explore">
+            Explore
+        </a>
+
+        <a href="index.html#categories">
+            Categories
+        </a>
+
+        <a href="list-property.html">
+            List Your Property
+        </a>
+
+        <a href="profile.html">
+            My Profile
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="listing-page">
+
+
+    <div class="listing-intro">
+
+        <span class="section-label">
+            MY PROPERTY
+        </span>
+
+        <h1>
+            Edit Property
+        </h1>
+
+        <p>
+            Update your property information.
+        </p>
+
+    </div>
+
+
+
+    <section class="form-section">
+
+
+        <form id="editPropertyForm">
+
+
+            <!-- PROPERTY INFORMATION -->
+
+            <section class="form-section">
+
+                <h2>
+                    Property Information
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="propertyName">
+                        Property Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="propertyName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="category">
+                        Property Type
+                    </label>
+
+                    <select
+                        id="category"
+                        required>
+
+                        <option value="hotel">
+                            Hotel
+                        </option>
+
+                        <option value="homestay">
+                            Homestay
+                        </option>
+
+                        <option value="pg">
+                            PG
+                        </option>
+
+                        <option value="hostel">
+                            Hostel
+                        </option>
+
+                        <option value="resort">
+                            Resort
+                        </option>
+
+                        <option value="guest-house">
+                            Guest House
+                        </option>
+
+                        <option value="picnic-spot">
+                            Picnic Spot
+                        </option>
+
+                        <option value="camping-site">
+                            Camping Site
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+                        About Your Property
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="5"
+                        required></textarea>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- LOCATION -->
+
+            <section class="form-section">
+
+                <h2>
+                    Location
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="maps">
+                        Google Maps Link
+                    </label>
+
+                    <input
+                        type="url"
+                        id="maps">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- CONTACT -->
+
+            <section class="form-section">
+
+                <h2>
+                    Contact Information
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="whatsapp">
+                        WhatsApp Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="whatsapp">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- OWNER DETAILS -->
+
+            <section class="form-section">
+
+                <h2>
+                    Owner / Manager Details
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="ownerName">
+                        Owner / Manager Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ownerName"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="ownerType">
+                        Your Role
+                    </label>
+
+                    <select
+                        id="ownerType"
+                        required>
+
+                        <option value="owner">
+                            Property Owner
+                        </option>
+
+                        <option value="manager">
+                            Property Manager
+                        </option>
+
+                        <option value="authorized">
+                            Authorized Representative
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="ownerPhone">
+                        Owner / Manager Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="ownerPhone"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="ownerWhatsapp">
+                        WhatsApp Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="ownerWhatsapp">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="ownerEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="ownerEmail"
+                        required>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- PRICING -->
+
+            <section class="form-section">
+
+                <h2>
+                    Pricing
+                </h2>
+
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Starting Price
+                    </label>
+
+                    <input
+                        type="number"
+                        id="price">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="priceType">
+                        Price Type
+                    </label>
+
+                    <select id="priceType">
+
+                        <option value="night">
+                            Per Night
+                        </option>
+
+                        <option value="month">
+                            Per Month
+                        </option>
+
+                        <option value="person">
+                            Per Person
+                        </option>
+
+                        <option value="day">
+                            Per Day
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+<!-- PHOTOS -->
+
+<section class="form-section">
+
+    <h2>
+        Property Photos
+    </h2>
+
+    <div id="currentPhotos"
+         style="
+            display:flex;
+            flex-wrap:wrap;
+            gap:15px;
+            margin-bottom:20px;
+         ">
+    </div>
+
+    <div class="form-group">
+
+        <label>
+            Add New Photos
+        </label>
+
+        <input
+            type="file"
+            id="newPhotos"
+            accept="image/jpeg,image/png,image/webp"
+            multiple>
+<button
+    type="button"
+    onclick="uploadNewPhotos()"
+    style="
+        margin-top:12px;
+        padding:10px 18px;
+        border:0;
+        border-radius:8px;
+        background:#198754;
+        color:white;
+        cursor:pointer;
+    "
+>
+    📤 Upload Photos
+</button>
+
+    </div>
+
+</section>
+
+            <!-- UPDATE -->
+
+            <section class="submit-section">
+
+                <div>
+
+                    <h3>
+                        Update your property
+                    </h3>
+
+                    <p>
+                        Your changes will be saved to ZoRent.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-property-btn"
+                    id="updateButton">
+
+                    Update Property
+
+                </button>
+
+            </section>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script src="supabase.js"></script>
+
+
+<script>
+
+/* =====================================================
+   GET PROPERTY ID
+===================================================== */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const propertyId =
+    params.get("id");
+
+    let currentPhotoUrls = [];
+
+
+/* =====================================================
+   CHECK PROPERTY ID
+===================================================== */
+
+if (!propertyId) {
+
+    alert(
+        "Property was not found."
+    );
+
+    window.location.href =
+        "profile.html";
+
+}
+
+
+
+/* =====================================================
+   LOAD PROPERTY
+===================================================== */
+
+async function loadProperty() {
+
+    try {
+
+        const {
+            data: {
+                user
+            }
+        } =
+            await supabaseClient.auth.getUser();
+
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const {
+            data: property,
+            error
+        } =
+            await supabaseClient
+
+                .from("properties")
+
+                .select("*")
+
+                .eq(
+                    "id",
+                    propertyId
+                )
+
+                .eq(
+                    "owner_id",
+                    user.id
+                )
+
+                .single();
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to load this property."
+            );
+
+            window.location.href =
+                "profile.html";
+
+            return;
+
+        }
+
+
+        /* =============================================
+           FILL FORM
+        ============================================= */
+
+        document.getElementById(
+            "propertyName"
+        ).value =
+            property.property_name || "";
+
+
+        document.getElementById(
+            "category"
+        ).value =
+            property.category || "";
+
+
+        document.getElementById(
+            "description"
+        ).value =
+            property.description || "";
+
+
+        document.getElementById(
+            "address"
+        ).value =
+            property.address || "";
+
+
+        document.getElementById(
+            "maps"
+        ).value =
+            property.maps || "";
+
+
+        document.getElementById(
+            "phone"
+        ).value =
+            property.phone || "";
+
+
+        document.getElementById(
+            "whatsapp"
+        ).value =
+            property.whatsapp || "";
+
+
+        document.getElementById(
+            "email"
+        ).value =
+            property.email || "";
+
+
+        document.getElementById(
+            "ownerName"
+        ).value =
+            property.owner_name || "";
+
+
+        document.getElementById(
+            "ownerType"
+        ).value =
+            property.owner_type || "";
+
+
+        document.getElementById(
+            "ownerPhone"
+        ).value =
+            property.owner_phone || "";
+
+
+        document.getElementById(
+            "ownerWhatsapp"
+        ).value =
+            property.owner_whatsapp || "";
+
+
+        document.getElementById(
+            "ownerEmail"
+        ).value =
+            property.owner_email || "";
+
+
+        document.getElementById(
+            "price"
+        ).value =
+            property.price || "";
+
+
+        document.getElementById(
+            "priceType"
+        ).value =
+            property.price_type || "night";
+            currentPhotoUrls =
+    property.photo_urls || [];
+console.log("DATABASE PHOTO URLS:", property.photo_urls);
+console.log("CURRENT PHOTO URLS:", currentPhotoUrls);
+displayPhotos();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Something went wrong."
+        );
+
+    }
+
+}
+
+/* =====================================================
+   REMOVE PHOTO
+===================================================== */
+
+async function removePhoto(index) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to remove this photo?"
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    currentPhotoUrls.splice(index, 1);
+
+
+    const {
+        error
+    } = await supabaseClient
+
+        .from("properties")
+
+        .update({
+            photo_urls: currentPhotoUrls
+        })
+
+        .eq(
+            "id",
+            propertyId
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Photo update error:",
+            error
+        );
+
+        alert(
+            "Could not remove the photo:\n\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    displayPhotos();
+
+
+    alert(
+        "Photo removed successfully."
+    );
+
+}
+
+async function uploadNewPhotos() {
+
+    const input =
+        document.getElementById("newPhotos");
+
+    const files =
+        input.files;
+
+    if (!files || files.length === 0) {
+
+        alert("Please select photos first.");
+
+        return;
+
+    }
+
+
+    try {
+
+        for (const file of files) {
+
+            const fileName =
+                `${Date.now()}-${Math.random()
+                    .toString(36)
+                    .substring(2, 10)}-${file.name}`;
+
+
+           const filePath =
+    `${propertyId}/photos/${fileName}`;
+
+            const {
+                error: uploadError
+            } = await supabaseClient.storage
+
+                .from("property-images")
+
+                .upload(
+                    filePath,
+                    file
+                );
+
+
+            if (uploadError) {
+
+                throw uploadError;
+
+            }
+
+
+            const {
+                data: publicData
+            } =
+                supabaseClient.storage
+
+                    .from("property-images")
+
+                    .getPublicUrl(
+                        filePath
+                    );
+
+
+            currentPhotoUrls.push(
+                publicData.publicUrl
+            );
+
+        }
+
+
+        const {
+            error: updateError
+        } = await supabaseClient
+
+            .from("properties")
+
+            .update({
+                photo_urls:
+                    currentPhotoUrls
+            })
+
+            .eq(
+                "id",
+                propertyId
+            );
+
+
+        if (updateError) {
+
+            throw updateError;
+
+        }
+
+
+        input.value = "";
+
+        displayPhotos();
+
+        alert(
+            "Photos uploaded successfully."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Photo upload error:",
+            error
+        );
+
+        alert(
+            "Could not upload photos:\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+/* =====================================================
+   UPDATE PROPERTY
+===================================================== */
+
+document
+    .getElementById("editPropertyForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            const updateButton =
+                document.getElementById(
+                    "updateButton"
+                );
+
+
+            updateButton.disabled =
+                true;
+
+
+            updateButton.textContent =
+                "Updating...";
+
+
+            try {
+
+                const {
+                    data: {
+                        user
+                    }
+                } =
+                    await supabaseClient
+                        .auth
+                        .getUser();
+
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                const propertyData = {
+
+                    property_name:
+                        document
+                            .getElementById(
+                                "propertyName"
+                            )
+                            .value
+                            .trim(),
+
+                    category:
+                        document
+                            .getElementById(
+                                "category"
+                            )
+                            .value,
+
+                    description:
+                        document
+                            .getElementById(
+                                "description"
+                            )
+                            .value
+                            .trim(),
+
+                    address:
+                        document
+                            .getElementById(
+                                "address"
+                            )
+                            .value
+                            .trim(),
+
+                    maps:
+                        document
+                            .getElementById(
+                                "maps"
+                            )
+                            .value
+                            .trim() || null,
+
+                    phone:
+                        document
+                            .getElementById(
+                                "phone"
+                            )
+                            .value
+                            .trim(),
+
+                    whatsapp:
+                        document
+                            .getElementById(
+                                "whatsapp"
+                            )
+                            .value
+                            .trim() || null,
+
+                    email:
+                        document
+                            .getElementById(
+                                "email"
+                            )
+                            .value
+                            .trim() || null,
+
+                    owner_name:
+                        document
+                            .getElementById(
+                                "ownerName"
+                            )
+                            .value
+                            .trim(),
+
+                    owner_type:
+                        document
+                            .getElementById(
+                                "ownerType"
+                            )
+                            .value,
+
+                    owner_phone:
+                        document
+                            .getElementById(
+                                "ownerPhone"
+                            )
+                            .value
+                            .trim(),
+
+                    owner_whatsapp:
+                        document
+                            .getElementById(
+                                "ownerWhatsapp"
+                            )
+                            .value
+                            .trim() || null,
+
+                    owner_email:
+                        document
+                            .getElementById(
+                                "ownerEmail"
+                            )
+                            .value
+                            .trim(),
+
+                    price:
+                        document
+                            .getElementById(
+                                "price"
+                            )
+                            .value
+                            ? Number(
+                                document
+                                    .getElementById(
+                                        "price"
+                                    )
+                                    .value
+                            )
+                            : null,
+
+                    price_type:
+                        document
+                            .getElementById(
+                                "priceType"
+                            )
+                            .value
+
+                };
+
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+
+                        .from("properties")
+
+                        .update(
+                            propertyData
+                        )
+
+                        .eq(
+                            "id",
+                            propertyId
+                        )
+
+                        .eq(
+                            "owner_id",
+                            user.id
+                        );
+
+
+                if (error) {
+
+                    console.error(
+                        "Update error:",
+                        error
+                    );
+
+                    alert(
+                        "Property could not be updated:\n\n" +
+                        error.message
+                    );
+
+                    updateButton.disabled =
+                        false;
+
+                    updateButton.textContent =
+                        "Update Property";
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Property updated successfully!"
+                );
+
+
+                window.location.href =
+                    "profile.html";
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+                alert(
+                    "Something went wrong:\n\n" +
+                    error.message
+                );
+
+
+                updateButton.disabled =
+                    false;
+
+                updateButton.textContent =
+                    "Update Property";
+
+            }
+
+        }
+    );
+
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadProperty();
+function displayPhotos() {
+
+    const container =
+        document.getElementById(
+            "currentPhotos"
+        );
+
+    container.innerHTML = "";
+
+    currentPhotoUrls.forEach(
+        function(url, index) {
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.style.position =
+                "relative";
+
+            box.innerHTML = `
+
+                <img
+                    src="${url}"
+                    style="
+                        width:140px;
+                        height:100px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        display:block;
+                    "
+                >
+
+                <button
+                    type="button"
+                    onclick="removePhoto(${index})"
+                    style="
+                        margin-top:5px;
+                        width:100%;
+                        padding:6px;
+                        border:0;
+                        border-radius:6px;
+                        background:#dc3545;
+                        color:white;
+                        cursor:pointer;
+                    "
+                >
+                    🗑️ Remove
+                </button>
+
+            `;
+
+            container.appendChild(box);
+
+        }
+    );
+
+}
+</script>
+
+
+</body>
+
+</html>

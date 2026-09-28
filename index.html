@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ZoRent | Stay • Explore • Relax</title>
+
+    <meta name="description"
+          content="Discover hotels, homestays, PGs, hostels, resorts and beautiful places across Mizoram.">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- SUPABASE LIBRARY -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <span class="logo-icon">
+            🌿
+        </span>
+
+        <span>
+            ZoRent
+        </span>
+
+    </div>
+
+
+    <nav class="nav">
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#explore">
+            Explore
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="list-property.html"
+           class="list-property-nav">
+            List Your Place
+        </a>
+        <a href="profile.html">
+    My Profile
+</a>
+
+    </nav>
+
+
+    <button class="menu-btn"
+            onclick="toggleMenu()">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero"
+         id="home">
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+        <p class="hero-small">
+            🌿 DISCOVER MIZORAM
+        </p>
+
+
+        <h1>
+
+            Stay closer to<br>
+
+            <span>
+                nature.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Discover beautiful stays, homestays, hotels,
+            resorts and peaceful places across Mizoram.
+
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+
+            <div class="search-item">
+
+                <span class="search-icon">
+                    📍
+                </span>
+
+                <div>
+
+                    <small>
+                        Location
+                    </small>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Where are you going?">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="search-item">
+
+                <span class="search-icon">
+                    🏷️
+                </span>
+
+                <div>
+
+                    <small>
+                        Looking for
+                    </small>
+
+
+                    <select id="category">
+
+                        <option value="">
+                            Any place
+                        </option>
+
+                        <option value="hotel">
+                            Hotel
+                        </option>
+
+                        <option value="homestay">
+                            Homestay
+                        </option>
+
+                        <option value="pg">
+                            PG
+                        </option>
+
+                        <option value="hostel">
+                            Hostel
+                        </option>
+
+                        <option value="resort">
+                            Resort
+                        </option>
+
+                        <option value="guest-house">
+                            Guest House
+                        </option>
+
+                        <option value="picnic-spot">
+                            Picnic Spot
+                        </option>
+
+                        <option value="camping-site">
+                            Camping Site
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                class="search-btn"
+                onclick="searchPlaces()">
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section class="section"
+         id="categories">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                FIND YOUR PLACE
+            </span>
+
+            <h2>
+                What are you looking for?
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Discover comfortable stays and beautiful
+            places across Mizoram.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="category-grid">
+
+
+        <!-- HOTEL -->
+
+        <div class="category-card"
+             onclick="selectCategory('hotel')">
+
+            <div class="category-image hotel">
+                🏨
+            </div>
+
+            <div class="category-content">
+
+                <h3>
+    Hotels
+    <span class="category-count" id="count-hotel">0</span>
+</h3>
+
+                <p>
+                    Comfortable stays for
+                    travellers and visitors.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('hotel')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HOMESTAY -->
+
+        <div class="category-card"
+             onclick="selectCategory('homestay')">
+
+            <div class="category-image homestay">
+                🏡
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Homestays
+    <span class="category-count" id="count-homestay">0</span>
+</h3>
+
+                <p>
+                    Experience local hospitality
+                    and Mizo culture.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('homestay')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PG -->
+
+        <div class="category-card"
+             onclick="selectCategory('pg')">
+
+            <div class="category-image pg">
+                🛏️
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    PG
+    <span class="category-count" id="count-pg">0</span>
+</h3>
+
+                <p>
+                    Comfortable accommodation
+                    for longer stays.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('pg')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HOSTEL -->
+
+        <div class="category-card"
+             onclick="selectCategory('hostel')">
+
+            <div class="category-image hostel">
+                🏫
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Hostels
+    <span class="category-count" id="count-hostel">0</span>
+</h3>
+
+                <p>
+                    Affordable places for
+                    students and travellers.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('hostel')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RESORT -->
+
+        <div class="category-card"
+             onclick="selectCategory('resort')">
+
+            <div class="category-image resort">
+                🌴
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Resorts
+    <span class="category-count" id="count-resort">0</span>
+</h3>
+
+                <p>
+                    Relax surrounded by
+                    beautiful nature.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('resort')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GUEST HOUSE -->
+
+        <div class="category-card"
+             onclick="selectCategory('guest-house')">
+
+            <div class="category-image guest-house">
+                🏠
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Guest Houses
+    <span class="category-count" id="count-guest-house">0</span>
+</h3>
+
+                <p>
+                    Peaceful and affordable
+                    places to stay.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('guest-house')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PICNIC -->
+
+        <div class="category-card"
+             onclick="selectCategory('picnic-spot')">
+
+            <div class="category-image picnic">
+                🧺
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Picnic Spots
+    <span class="category-count" id="count-picnic-spot">0</span>
+</h3>
+
+                <p>
+                    Enjoy peaceful places
+                    with friends and family.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('picnic-spot')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CAMPING -->
+
+        <div class="category-card"
+             onclick="selectCategory('camping-site')">
+
+            <div class="category-image camping">
+                🏕️
+            </div>
+
+            <div class="category-content">
+
+               <h3>
+    Camping Sites
+    <span class="category-count" id="count-camping-site">0</span>
+</h3>
+
+                <p>
+                    Sleep under the stars
+                    and enjoy the hills.
+                </p>
+
+                <a href="#explore"
+                   onclick="event.stopPropagation(); selectCategory('camping-site')">
+                    Explore →
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURED / DYNAMIC PROPERTIES
+===================================================== -->
+
+<section class="featured"
+         id="explore">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <span class="section-label">
+                EXPLORE ZORAM
+            </span>
+
+            <h2>
+                Discover popular places
+            </h2>
+
+        </div>
+
+
+        <a href="#explore"
+           class="view-all">
+
+            View all →
+
+        </a>
+
+    </div>
+
+
+
+    <!-- DYNAMIC PROPERTY GRID -->
+    <div class="place-grid"
+         id="propertyGrid">
+
+        <p id="propertyLoading"
+           style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:40px;
+           ">
+
+            Loading approved properties...
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NATURE BANNER
+===================================================== -->
+
+<section class="nature-banner">
+
+
+    <div class="nature-content">
+
+        <span>
+            🌿 EXPERIENCE ZORAM
+        </span>
+
+
+        <h2>
+
+            Where every journey<br>
+            meets the hills.
+
+        </h2>
+
+
+        <p>
+
+            From misty mountains to peaceful
+            villages, discover the natural beauty
+            of Mizoram.
+
+        </p>
+
+
+        <button
+            onclick="document.getElementById('explore').scrollIntoView({behavior:'smooth'})">
+
+            Explore Mizoram →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LIST YOUR PLACE
+===================================================== -->
+
+<section class="list-section"
+         id="list-property">
+
+
+    <div>
+
+        <span class="section-label">
+            FOR PROPERTY OWNERS
+        </span>
+
+
+        <h2>
+
+            Have a place people<br>
+            would love to visit?
+
+        </h2>
+
+
+        <p>
+
+            List your hotel, homestay, PG, hostel,
+            resort or picnic spot on ZoRent and
+            reach more visitors.
+
+        </p>
+
+
+        <a href="list-property.html"
+           class="primary-btn">
+
+            List Your Place →
+
+        </a>
+
+    </div>
+
+
+
+    <div class="owner-card">
+
+        <div class="owner-icon">
+            🌿
+        </div>
+
+
+        <h3>
+            Grow your business
+        </h3>
+
+
+        <p>
+
+            Reach travellers and local customers
+            searching for places in Mizoram.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     OWNER CTA
+===================================================== -->
+
+<section class="owner-cta">
+
+
+    <div class="owner-cta-content">
+
+        <span class="section-label">
+            PROPERTY OWNERS
+        </span>
+
+
+        <h2>
+            Have a place in Mizoram?
+        </h2>
+
+
+        <p>
+
+            List your hotel, homestay, PG, hostel,
+            resort, guest house, picnic spot or
+            camping site on ZoRent.
+
+        </p>
+
+
+        <a href="list-property.html"
+           class="owner-cta-button">
+
+            List Your Place →
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+
+    <div class="footer-main">
+
+
+        <div>
+
+            <div class="logo footer-logo">
+                🌿 ZoRent
+            </div>
+
+
+            <p>
+
+                Discover places.<br>
+                Experience Mizoram.
+
+            </p>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                Explore
+            </h4>
+
+
+            <a href="#explore">
+                Hotels
+            </a>
+
+
+            <a href="#explore">
+                Homestays
+            </a>
+
+
+            <a href="#explore">
+                Resorts
+            </a>
+
+
+            <a href="#explore">
+                Picnic Spots
+            </a>
+
+        </div>
+
+
+
+        <div>
+
+            <h4>
+                ZoRent
+            </h4>
+
+
+            <a href="#">
+                About us
+            </a>
+
+
+            <a href="#">
+                Contact
+            </a>
+
+
+            <a href="list-property.html">
+                List your place
+            </a>
+
+
+            <a href="#">
+                Terms
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 ZoRent.
+            All rights reserved.
+        </span>
+
+
+        <span>
+            Made with 🌿 in Mizoram
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     SUPABASE CONNECTION
+===================================================== -->
+
+<script src="supabase.js"></script>
+
+
+
+<!-- =====================================================
+     DYNAMIC PROPERTY SYSTEM
+===================================================== -->
+
+<script>
+
+
+async function loadApprovedProperties() {
+
+    const grid =
+        document.getElementById("propertyGrid");
+
+    try {
+
+        const {
+            data,
+            error
+        } = await window.supabaseClient
+
+            .from("properties")
+
+            .select("*")
+
+            .order("created_at", {
+                ascending: false
+            });
+
+
+        console.log("ALL PROPERTIES:", data);
+        console.log("SUPABASE ERROR:", error);
+
+
+        if (error) {
+
+            console.error(error);
+
+            grid.innerHTML = `
+                <p style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:40px;
+                ">
+                    Unable to load properties.
+                </p>
+            `;
+
+            return;
+        }
+
+
+        /* =====================================
+           ONLY APPROVED PROPERTIES
+        ===================================== */
+console.log("ALL PROPERTIES FROM SUPABASE:", data);
+        const approvedProperties =
+            (data || []).filter(property => {
+
+                const status =
+                    String(
+                        property.status || ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+                return status === "approved";
+
+            });
+/* =====================================
+   CATEGORY COUNTS
+===================================== */
+
+const categoryCounts = {
+
+    hotel: 0,
+    homestay: 0,
+    pg: 0,
+    hostel: 0,
+    resort: 0,
+    "guest-house": 0,
+    "picnic-spot": 0,
+    "camping-site": 0
+
+};
+
+
+approvedProperties.forEach(property => {
+
+    const category =
+        String(property.category || "")
+            .trim()
+            .toLowerCase();
+
+    if (
+        Object.prototype.hasOwnProperty.call(
+            categoryCounts,
+            category
+        )
+    ) {
+
+        categoryCounts[category]++;
+
+    }
+
+});
+
+
+console.log(
+    "CATEGORY COUNTS:",
+    categoryCounts
+);
+Object.keys(categoryCounts).forEach(category => {
+
+    const element =
+        document.getElementById(
+            "count-" + category
+        );
+
+    if (element) {
+
+        element.textContent =
+            categoryCounts[category];
+
+    }
+
+});
+        console.log(
+            "APPROVED PROPERTIES:",
+            approvedProperties
+        );
+
+
+        /* =====================================
+           NOTHING APPROVED
+        ===================================== */
+
+        if (
+            approvedProperties.length === 0
+        ) {
+
+            grid.innerHTML = `
+                <div style="
+                    grid-column:1/-1;
+                    text-align:center;
+                    padding:40px;
+                ">
+
+                    <h3>
+                        New places coming soon
+                    </h3>
+
+                    <p>
+                        Approved properties will appear here.
+                    </p>
+
+                </div>
+            `;
+
+            return;
+        }
+
+
+        /* =====================================
+           CLEAR LOADING
+        ===================================== */
+
+        grid.innerHTML = "";
+
+
+        /* =====================================
+           CREATE PROPERTY CARDS
+        ===================================== */
+
+        approvedProperties.forEach(
+            property => {
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "place-card";
+
+
+                card.style.cursor =
+                    "pointer";
+
+
+                /* CATEGORY */
+
+                const categoryName =
+                    property.category
+
+                        ? property.category
+                            .replaceAll(
+                                "-",
+                                " "
+                            )
+                            .toUpperCase()
+
+                        : "PROPERTY";
+
+
+                /* PROPERTY NAME */
+
+                const propertyName =
+                    property.property_name ||
+                    "Unnamed Property";
+
+
+                /* ADDRESS */
+
+                const address =
+                    property.address ||
+                    "Mizoram";
+
+
+                /* PRICE */
+
+                let priceHTML = "";
+
+                if (
+                    property.price !== null &&
+                    property.price !== undefined &&
+                    property.price !== ""
+                ) {
+
+                    priceHTML = `
+                        ₹${Number(
+                            property.price
+                        ).toLocaleString("en-IN")}
+
+                        <small>
+                            / ${escapeHTML(
+                                property.price_type ||
+                                "night"
+                            )}
+                        </small>
+                    `;
+
+                } else {
+
+                    priceHTML = `
+                        <small>
+                            Contact property
+                        </small>
+                    `;
+
+                }
+
+
+                /* =================================
+                   PHOTO
+                ================================= */
+
+                let photoUrls =
+                    property.photo_urls || [];
+
+
+                if (
+                    typeof photoUrls ===
+                    "string"
+                ) {
+
+                    try {
+
+                        photoUrls =
+                            JSON.parse(
+                                photoUrls
+                            );
+
+                    } catch {
+
+                        photoUrls = [
+                            photoUrls
+                        ];
+
+                    }
+
+                }
+
+
+                if (
+                    !Array.isArray(
+                        photoUrls
+                    )
+                ) {
+
+                    photoUrls = [];
+
+                }
+
+
+                photoUrls =
+                    photoUrls
+                        .map(url =>
+                            String(url)
+                                .trim()
+                        )
+                        .filter(url =>
+                            url.startsWith(
+                                "http"
+                            )
+                        );
+
+
+                const photo =
+                    photoUrls.length > 0
+                        ? photoUrls[0]
+                        : "";
+
+
+                let imageHTML;
+
+
+                if (photo) {
+
+                    imageHTML = `
+                        <img
+                            src="${escapeHTML(
+                                photo
+                            )}"
+                            alt="${escapeHTML(
+                                propertyName
+                            )}"
+                            style="
+                                width:100%;
+                                height:100%;
+                                object-fit:cover;
+                                display:block;
+                            "
+                            onerror="
+                                this.style.display='none';
+                            "
+                        >
+                    `;
+
+                } else {
+
+                    imageHTML = `
+                        <div style="
+                            width:100%;
+                            height:100%;
+                            display:flex;
+                            align-items:center;
+                            justify-content:center;
+                            font-size:55px;
+                        ">
+                            🏨
+                        </div>
+                    `;
+
+                }
+
+
+                /* =================================
+                   CARD
+                ================================= */
+
+                card.innerHTML = `
+
+                    <div
+                        class="place-image"
+                        style="
+                            position:relative;
+                            overflow:hidden;
+                        "
+                    >
+
+                        ${imageHTML}
+
+
+                        <span class="badge">
+                            Approved
+                        </span>
+
+
+                        <button
+                            class="heart"
+                            type="button"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <div class="place-info">
+
+                        <div class="place-type">
+                            ${escapeHTML(
+                                categoryName
+                            )}
+                        </div>
+
+
+                        <h3>
+                            ${escapeHTML(
+                                propertyName
+                            )}
+                        </h3>
+
+
+                        <p class="location">
+                            📍
+                            ${escapeHTML(
+                                address
+                            )}
+                        </p>
+
+
+                        <div class="place-bottom">
+
+                            <strong>
+                                ${priceHTML}
+                            </strong>
+
+
+                            <span class="rating">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                /* =================================
+                   OPEN PROPERTY
+                ================================= */
+
+                card.addEventListener(
+                    "click",
+                    function(event) {
+
+                        if (
+                            event.target.closest(
+                                "button"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        window.location.href =
+                            "property.html?id=" +
+                            encodeURIComponent(
+                                property.id
+                            );
+
+                    }
+                );
+
+
+                /* =================================
+                   HEART
+                ================================= */
+
+                const heart =
+                    card.querySelector(
+                        ".heart"
+                    );
+
+
+                heart.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+
+
+                        heart.innerHTML =
+                            heart.innerHTML
+                                .trim() === "♡"
+                                    ? "♥"
+                                    : "♡";
+
+                    }
+                );
+
+
+                grid.appendChild(card);
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Unexpected error:",
+            error
+        );
+
+
+        grid.innerHTML = `
+
+            <p style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:40px;
+            ">
+
+                Something went wrong
+                while loading properties.
+
+            </p>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+
+function searchPlaces() {
+
+
+    const location =
+        document
+            .getElementById("location")
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const category =
+        document
+            .getElementById("category")
+            .value
+            .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(
+            "#propertyGrid .place-card"
+        );
+
+
+    cards.forEach(card => {
+
+
+        const text =
+            card.innerText.toLowerCase();
+
+
+        const matchesLocation =
+            !location ||
+            text.includes(location);
+
+
+        const matchesCategory =
+            !category ||
+            text.includes(
+                category.replaceAll("-", " ")
+            );
+
+
+        if (
+            matchesLocation &&
+            matchesCategory
+        ) {
+
+            card.style.display =
+                "";
+
+        } else {
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    document
+        .getElementById("explore")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+
+function escapeHTML(value) {
+
+
+    return String(value)
+
+        .replaceAll("&", "&amp;")
+
+        .replaceAll("<", "&lt;")
+
+        .replaceAll(">", "&gt;")
+
+        .replaceAll('"', "&quot;")
+
+        .replaceAll("'", "&#039;");
+
+}
+
+
+
+/* =====================================================
+   LOAD PROPERTIES
+===================================================== */
+
+
+loadApprovedProperties();
+
+
+</script>
+
+
+
+<!-- EXISTING WEBSITE SCRIPT -->
+
+<script src="script.js"></script>
+
+<script>
+
+const searchBox =
+    document.getElementById("propertySearch");
+
+const categoryBox =
+    document.getElementById("propertyCategory");
+
+
+searchBox.addEventListener(
+    "input",
+    function () {
+
+        const text =
+            searchBox.value
+                .toLowerCase()
+                .trim();
+
+        const cards =
+            document.querySelectorAll(
+                "#propertyGrid .place-card"
+            );
+
+
+        cards.forEach(
+            function (card) {
+
+                const content =
+                    card.textContent
+                        .toLowerCase();
+
+
+                if (
+                    content.includes(text)
+                ) {
+
+                    card.style.display =
+                        "";
+
+                } else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+categoryBox.addEventListener(
+    "change",
+    function () {
+
+        const category =
+            categoryBox.value
+                .toLowerCase();
+
+
+        const cards =
+            document.querySelectorAll(
+                "#propertyGrid .place-card"
+            );
+
+
+        cards.forEach(
+            function (card) {
+
+                const content =
+                    card.textContent
+                        .toLowerCase();
+
+
+                if (
+                    category === "all" ||
+                    content.includes(
+                        category.replace(
+                            "-",
+                            " "
+                        )
+                    )
+                ) {
+
+                    card.style.display =
+                        "";
+
+                } else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            }
+        );
+
+    }
+);
+
+</script>
+</body>
+
+</html>

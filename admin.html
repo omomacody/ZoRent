@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ZoRent Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="logo">
+        🌿 ZoRent Admin
+    </div>
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Website
+        </a>
+
+        <a href="list-property.html">
+            List Property
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="listing-page">
+
+
+    <div class="listing-intro">
+
+        <span class="section-label">
+            ADMIN PANEL
+        </span>
+
+        <h1>
+            Property Submissions
+        </h1>
+
+        <p>
+            Review and approve properties submitted
+            by owners and managers.
+        </p>
+
+    </div>
+
+
+
+    <section class="form-section">
+
+        <div id="propertyList">
+
+            <div
+                style="
+                    padding:40px;
+                    text-align:center;
+                "
+            >
+
+                <p>
+                    Loading pending properties...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
+
+const SUPABASE_URL =
+    "https://jlgudbktobxzdwbwgnkj.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_8sgkZH2-S_HNzkmVmf7s3Q_KiOys6IX";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+/* =====================================================
+   ADMIN SECURITY
+===================================================== */
+
+const ADMIN_EMAIL =
+    "chhuanoma27@gmail.com";
+
+
+async function checkAdmin() {
+
+    const {
+        data: {
+            user
+        }
+    } =
+        await supabaseClient.auth.getUser();
+
+
+    if (!user) {
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+
+    if (
+        user.email.toLowerCase() !==
+        ADMIN_EMAIL.toLowerCase()
+    ) {
+
+        alert(
+            "You are not authorized to access the admin page."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   HTML ESCAPE
+===================================================== */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =====================================================
+   PROPERTY LIST
+===================================================== */
+
+const propertyList =
+    document.getElementById("propertyList");
+
+
+
+/* =====================================================
+   LOAD ONLY PENDING PROPERTIES
+===================================================== */
+
+async function loadProperties() {
+
+    propertyList.innerHTML = `
+
+        <div
+            style="
+                padding:40px;
+                text-align:center;
+            "
+        >
+
+            <p>
+                Loading pending properties...
+            </p>
+
+        </div>
+
+    `;
+
+
+    try {
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+
+            .from("properties")
+
+            .select("*")
+
+            .eq(
+                "status",
+                "pending"
+            )
+
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+console.log("ADMIN QUERY RESULT:", data);
+console.log(
+    "ADMIN QUERY STATUSES:",
+    (data || []).map(property => ({
+        id: property.id,
+        name: property.property_name,
+        status: property.status
+    }))
+);
+
+
+
+        /* =============================================
+           ERROR
+        ============================================= */
+
+        if (error) {
+
+            propertyList.innerHTML = `
+
+                <div
+                    style="
+                        padding:25px;
+                        border:1px solid #e5caca;
+                        border-radius:15px;
+                        background:#fff5f5;
+                    "
+                >
+
+                    <h3>
+                        Error loading properties
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(
+                            error.message
+                        )}
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /* =============================================
+           NO PENDING PROPERTIES
+        ============================================= */
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            propertyList.innerHTML = `
+
+                <div
+                    style="
+                        padding:50px;
+                        text-align:center;
+                        border:1px solid #ddd;
+                        border-radius:16px;
+                        background:#fff;
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size:45px;
+                            margin-bottom:15px;
+                        "
+                    >
+                        ✓
+                    </div>
+
+                    <h3>
+                        No pending submissions
+                    </h3>
+
+                    <p>
+                        All property submissions
+                        have been reviewed.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+
+        /* =============================================
+           CLEAR LOADING
+        ============================================= */
+
+        propertyList.innerHTML = "";
+
+
+
+        /* =============================================
+           DISPLAY PENDING PROPERTIES
+        ============================================= */
+
+        data.forEach(property => {
+
+
+            const card =
+                document.createElement("div");
+
+
+            card.style.border =
+                "1px solid #ddd";
+
+
+            card.style.borderRadius =
+                "16px";
+
+
+            card.style.padding =
+                "25px";
+
+
+            card.style.marginBottom =
+                "20px";
+
+
+            card.style.background =
+                "#ffffff";
+
+
+            card.style.boxShadow =
+                "0 5px 20px rgba(0,0,0,0.05)";
+
+
+
+            /* =========================================
+               PHOTO
+            ========================================= */
+
+            let photoHTML = "";
+
+
+            if (
+                property.photo_urls &&
+                Array.isArray(property.photo_urls) &&
+                property.photo_urls.length > 0
+            ) {
+
+                photoHTML = `
+
+                    <div
+                        style="
+                            display:flex;
+                            gap:10px;
+                            flex-wrap:wrap;
+                            margin:20px 0;
+                        "
+                    >
+
+                        ${property.photo_urls
+                            .map(url => `
+
+                                <img
+                                    src="${escapeHTML(url)}"
+                                    alt="Property photo"
+                                    style="
+                                        width:150px;
+                                        height:100px;
+                                        object-fit:cover;
+                                        border-radius:10px;
+                                    "
+                                >
+
+                            `)
+                            .join("")
+                        }
+
+                    </div>
+
+                `;
+
+            }
+
+
+
+            /* =========================================
+               GOOGLE MAPS
+            ========================================= */
+
+            let mapsHTML = "-";
+
+
+            if (property.google_maps) {
+
+                mapsHTML = `
+
+                    <a
+                        href="${escapeHTML(
+                            property.google_maps
+                        )}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Google Maps
+                    </a>
+
+                `;
+
+            }
+
+
+
+            /* =========================================
+               CARD
+            ========================================= */
+
+            card.innerHTML = `
+
+                <h2
+                    style="
+                        margin-top:0;
+                        margin-bottom:15px;
+                    "
+                >
+
+                    ${escapeHTML(
+                        property.property_name ||
+                        "Unnamed Property"
+                    )}
+
+                </h2>
+
+
+                <p>
+
+                    <strong>
+                        Category:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.category || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Description:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.description || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Address:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.address || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Google Maps:
+                    </strong>
+
+                    ${mapsHTML}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Phone:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.phone || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        WhatsApp:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.whatsapp || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Email:
+                    </strong>
+
+                    ${escapeHTML(
+                        property.email || "-"
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Price:
+                    </strong>
+
+                    ${
+                        property.price
+                        ? "₹" + escapeHTML(
+                            property.price
+                        )
+                        : "-"
+                    }
+
+                    ${escapeHTML(
+                        property.price_type || ""
+                    )}
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
+                    <span
+                        style="
+                            display:inline-block;
+                            padding:5px 12px;
+                            margin-left:5px;
+                            border-radius:20px;
+                            background:#fff3cd;
+                            color:#856404;
+                        "
+                    >
+
+                        Pending
+
+                    </span>
+
+                </p>
+
+
+                ${photoHTML}
+
+
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        flex-wrap:wrap;
+                        margin-top:20px;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="approve-btn"
+                        data-id="${property.id}"
+                        style="
+                            padding:10px 18px;
+                            border:0;
+                            border-radius:8px;
+                            background:#198754;
+                            color:white;
+                            cursor:pointer;
+                        "
+                    >
+                        ✓ Approve
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="reject-btn"
+                        data-id="${property.id}"
+                        style="
+                            padding:10px 18px;
+                            border:0;
+                            border-radius:8px;
+                            background:#dc3545;
+                            color:white;
+                            cursor:pointer;
+                        "
+                    >
+                        ✕ Reject
+                    </button>
+
+                </div>
+
+
+                <p
+                    style="
+                        color:#777;
+                        font-size:14px;
+                        margin-top:20px;
+                    "
+                >
+
+                    <strong>
+                        Submitted:
+                    </strong>
+
+                    ${
+                        property.created_at
+
+                        ? escapeHTML(
+                            new Date(
+                                property.created_at
+                            ).toLocaleString()
+                        )
+
+                        : "-"
+                    }
+
+                </p>
+
+            `;
+
+
+            propertyList.appendChild(card);
+
+
+        });
+
+
+
+        /* =============================================
+           APPROVE BUTTONS
+        ============================================= */
+
+        document
+            .querySelectorAll(".approve-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        updateStatus(
+                            this.dataset.id,
+                            "approved",
+                            this
+                        );
+
+                    }
+                );
+
+            });
+
+
+
+        /* =============================================
+           REJECT BUTTONS
+        ============================================= */
+
+        document
+            .querySelectorAll(".reject-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        updateStatus(
+                            this.dataset.id,
+                            "rejected",
+                            this
+                        );
+
+                    }
+                );
+
+            });
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Unexpected loading error:",
+            error
+        );
+
+
+        propertyList.innerHTML = `
+
+            <div
+                style="
+                    padding:25px;
+                    border:1px solid #e5caca;
+                    border-radius:15px;
+                    background:#fff5f5;
+                "
+            >
+
+                <h3>
+                    Error loading properties
+                </h3>
+
+                <p>
+                    ${escapeHTML(
+                        error.message
+                    )}
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   APPROVE / REJECT PROPERTY
+===================================================== */
+
+async function updateStatus(
+    id,
+    newStatus,
+    button
+) {
+
+
+    /* =============================================
+       PREVENT DOUBLE CLICK
+    ============================================= */
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.style.opacity = "0.6";
+
+        button.textContent =
+            "Updating...";
+
+    }
+
+
+    console.log(
+        "Updating property:",
+        id
+    );
+
+
+    console.log(
+        "New status:",
+        newStatus
+    );
+
+
+    try {
+
+
+        const {
+            error
+        } = await supabaseClient
+
+            .from("properties")
+
+            .update({
+                status: newStatus
+            })
+
+            .eq(
+                "id",
+                id
+            );
+
+
+        console.log(
+            "UPDATE ERROR:",
+            error
+        );
+
+
+        /* =========================================
+           UPDATE ERROR
+        ========================================= */
+
+        if (error) {
+
+            alert(
+                "Could not update property:\n\n" +
+                error.message
+            );
+
+
+            if (button) {
+
+                button.disabled = false;
+
+                button.style.opacity = "1";
+
+                button.textContent =
+                    newStatus === "approved"
+                    ? "✓ Approve"
+                    : "✕ Reject";
+
+            }
+
+
+            return;
+
+        }
+
+
+
+        /* =========================================
+           SUCCESS
+        ========================================= */
+
+        alert(
+            "Property successfully changed to " +
+            newStatus
+        );
+
+
+        /* =========================================
+           RELOAD ONLY PENDING PROPERTIES
+        ========================================= */
+
+        window.location.reload();
+
+
+    }
+
+
+    catch (error) {
+
+        console.error(
+            "Unexpected update error:",
+            error
+        );
+
+
+        alert(
+            "Something went wrong:\n\n" +
+            error.message
+        );
+
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.style.opacity = "1";
+
+            button.textContent =
+                newStatus === "approved"
+                ? "✓ Approve"
+                : "✕ Reject";
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   START ADMIN PAGE
+===================================================== */
+
+checkAdmin().then(function(isAdmin) {
+
+    if (isAdmin) {
+        loadProperties();
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>

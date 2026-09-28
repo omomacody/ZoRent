@@ -713,6 +713,16 @@
 
 <script>
 
+supabaseClient.auth.getSession().then(function(result) {
+
+    if (!result.data.session) {
+
+        window.location.replace("login.html");
+
+    }
+
+});
+
 const form = document.getElementById("propertyForm");
 const submitButton = document.getElementById("submitButton");
 

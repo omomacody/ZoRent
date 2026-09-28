@@ -304,7 +304,7 @@
 
 
             </div>
-            
+
         </section>
 
 
@@ -570,8 +570,10 @@ supabaseClient.auth.getSession().then(function(result) {
 
 });
 
+
 const form = document.getElementById("propertyForm");
 const submitButton = document.getElementById("submitButton");
+
 
 form.addEventListener("submit", async function(event) {
 
@@ -580,40 +582,59 @@ form.addEventListener("submit", async function(event) {
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
+
     try {
 
+
         if (!window.supabaseClient) {
-            throw new Error("Supabase connection was not found. Check supabase.js.");
+
+            throw new Error(
+                "Supabase connection was not found. Check supabase.js."
+            );
+
         }
 
-        const propertyName = document.getElementById("propertyName").value.trim();
-        const category = document.getElementById("category").value;
-        const description = document.getElementById("description").value.trim();
-        const address = document.getElementById("address").value.trim();
-        const maps = document.getElementById("maps").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const whatsapp = document.getElementById("whatsapp").value.trim();
-        const email = document.getElementById("email").value.trim();
 
-        const ownerName = document.getElementById("ownerName").value.trim();
-        const ownerType = document.getElementById("ownerType").value;
-        const ownerPhone = document.getElementById("ownerPhone").value.trim();
-        const ownerWhatsapp = document.getElementById("ownerWhatsapp").value.trim();
-        const ownerEmail = document.getElementById("ownerEmail").value.trim();
+        const propertyName =
+            document.getElementById("propertyName").value.trim();
 
-        const price = document.getElementById("price").value;
-        const priceType = document.getElementById("priceType").value;
+        const category =
+            document.getElementById("category").value;
 
-        const photos = document.getElementById("photos").files;
+        const address =
+            document.getElementById("address").value.trim();
+
+        const maps =
+            document.getElementById("maps").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const whatsapp =
+            document.getElementById("whatsapp").value.trim();
+
+        const price =
+            document.getElementById("price").value;
+
+        const priceType =
+            document.getElementById("priceType").value;
+
+        const photos =
+            document.getElementById("photos").files;
+
+
         if (photos.length > 10) {
-            throw new Error("Please upload a maximum of 10 property photos.");
+
+            throw new Error(
+                "Please upload a maximum of 10 property photos."
+            );
+
         }
+
 
         /*
          * IMPORTANT:
          * Upload files FIRST, then insert the property.
-         * This avoids needing an UPDATE permission on the
-         * properties table just to save photo_urls.
          */
 
         const uploadFolder =
@@ -622,16 +643,20 @@ form.addEventListener("submit", async function(event) {
             "-" +
             Math.random().toString(36).substring(2, 10);
 
+
         const photoUrls = [];
+
 
         for (let i = 0; i < photos.length; i++) {
 
             const file = photos[i];
 
+
             const extension =
                 file.name.includes(".")
                     ? file.name.split(".").pop().toLowerCase()
                     : "jpg";
+
 
             const fileName =
                 uploadFolder +
@@ -641,6 +666,7 @@ form.addEventListener("submit", async function(event) {
                 Date.now() +
                 "." +
                 extension;
+
 
             const { error: uploadError } =
                 await window.supabaseClient.storage
@@ -654,40 +680,50 @@ form.addEventListener("submit", async function(event) {
                         }
                     );
 
+
             if (uploadError) {
+
                 console.error(uploadError);
+
                 throw new Error(
                     "Photo upload failed: " +
                     uploadError.message
                 );
+
             }
+
 
             const { data: publicUrlData } =
                 window.supabaseClient.storage
                     .from("property-images")
                     .getPublicUrl(fileName);
 
+
             if (
                 !publicUrlData ||
                 !publicUrlData.publicUrl
             ) {
+
                 throw new Error(
                     "Could not create public URL for photo."
                 );
+
             }
+
 
             photoUrls.push(
                 publicUrlData.publicUrl
             );
+
         }
+
+
         /*
          * GET CURRENT USER
-         *
-         * If your ZoRent site does not use Supabase Auth,
-         * owner_id will simply be null.
          */
 
         let ownerId = null;
+
 
         try {
 
@@ -696,8 +732,10 @@ form.addEventListener("submit", async function(event) {
             } =
                 await window.supabaseClient.auth.getUser();
 
+
             ownerId =
                 userData?.user?.id || null;
+
 
         } catch (authError) {
 
@@ -707,11 +745,9 @@ form.addEventListener("submit", async function(event) {
 
         }
 
+
         /*
          * INSERT PROPERTY
-         *
-         * PHOTO URLS ARE SAVED DURING INSERT.
-         * No UPDATE is required.
          */
 
         const propertyData = {
@@ -723,7 +759,7 @@ form.addEventListener("submit", async function(event) {
                 category,
 
             description:
-                description,
+                null,
 
             address:
                 address,
@@ -738,22 +774,22 @@ form.addEventListener("submit", async function(event) {
                 whatsapp || null,
 
             email:
-                email || null,
+                null,
 
             owner_name:
-                ownerName,
+                null,
 
             owner_type:
-                ownerType,
+                null,
 
             owner_phone:
-                ownerPhone,
+                null,
 
             owner_whatsapp:
-                ownerWhatsapp || null,
+                null,
 
             owner_email:
-                ownerEmail,
+                null,
 
             price:
                 price
@@ -767,19 +803,21 @@ form.addEventListener("submit", async function(event) {
                 "pending",
 
             photo_urls:
-                photoUrls,
-
+                photoUrls
 
         };
 
+
         /*
-         * Only send owner_id when an authenticated
-         * Supabase user actually exists.
+         * Only send owner_id when authenticated
          */
 
         if (ownerId) {
+
             propertyData.owner_id = ownerId;
+
         }
+
 
         const {
             data: property,
@@ -791,6 +829,7 @@ form.addEventListener("submit", async function(event) {
                 .select()
                 .single();
 
+
         if (propertyError) {
 
             console.error(
@@ -798,16 +837,20 @@ form.addEventListener("submit", async function(event) {
                 propertyError
             );
 
+
             throw new Error(
                 "Property could not be saved: " +
                 propertyError.message
             );
+
         }
+
 
         console.log(
             "Property successfully created:",
             property
         );
+
 
         /*
          * SUCCESS
@@ -822,27 +865,35 @@ form.addEventListener("submit", async function(event) {
             "The ZoRent team will review your listing before it becomes publicly visible."
         );
 
+
         form.reset();
+
 
         window.location.href =
             "index.html";
 
+
     } catch (error) {
+
 
         console.error(
             "Submission error:",
             error
         );
 
+
         alert(
             "Submission failed:\n\n" +
             error.message
         );
 
+
         submitButton.disabled = false;
+
 
         submitButton.textContent =
             "Submit Property";
+
     }
 
 });
